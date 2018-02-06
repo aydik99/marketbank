@@ -8,13 +8,16 @@ use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
+use app\models\RegisterForm;
 use app\models\ContactForm;
+use app\models\User;
 
 class SiteController extends Controller
 {
     /**
      * @inheritdoc
      */
+        
     public function behaviors()
     {
         return [
@@ -55,13 +58,15 @@ class SiteController extends Controller
         ];
     }
 
+    
+    
     /**
      * Displays homepage.
      *
      * @return string
      */
     public function actionIndex()
-    {
+    {        
         if (Yii::$app->user->isGuest) {
             return Yii::$app->response->redirect(['site/login']);
         } else {
@@ -82,7 +87,9 @@ class SiteController extends Controller
         }
 
         $model = new LoginForm();
+        
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            
             return $this->goBack();
         }
         return $this->render('login', [
@@ -135,4 +142,36 @@ class SiteController extends Controller
         }
         return $this->render('about');
     }
+    
+    /**
+     * Displays register page.
+     *
+     * @return string
+     */
+    public function actionRegister()
+    {        
+        if (!Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+
+        $model = new RegisterForm();
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) 
+        {
+            $user = new User();
+            $user->username = $model->username;
+            $user->password = Yii::$app->security->generatePasswordHash($model->password);
+            
+            if ($user->save())
+            {
+                return $this->goHome();
+            }
+        }
+
+        
+        return $this->render('register', [
+            'model' => $model,
+        ]);
+    }
+    
+    
 }
