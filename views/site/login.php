@@ -39,6 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php ActiveForm::end(); ?>
 
     <div class="col-lg-offset-1" style="color:#999;">
-        Войти можно с пользователями <strong>admin/admin</strong> или <strong>demo/demo</strong>.<br>        
+        Если у вас ещё нет логина, пожалуйста, <a href="<?=Yii::$app->urlManager->CreateUrl(['site/register']) ?>">зарегистируйтесь</a>.
+        
     </div>
 </div>
