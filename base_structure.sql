@@ -1,4 +1,4 @@
--- --------------------------------------------------------
+﻿-- --------------------------------------------------------
 -- Хост:                         127.0.0.1
 -- Версия сервера:               5.6.37 - MySQL Community Server (GPL)
 -- Операционная система:         Win32
@@ -21,8 +21,13 @@ USE `marketbase`;
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
+  `username` varchar(30) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `lastname` varchar(30) NOT NULL,
+  `firstname` varchar(30) NOT NULL,
+  `fathername` varchar(30) NOT NULL,
+  `datebirth` date NOT NULL,
+  `email` varchar(50) NOT NULL,
   `role` varchar(255) NOT NULL DEFAULT 'user',
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)

@@ -159,6 +159,12 @@ class SiteController extends Controller
         {
             $user = new User();
             $user->username = $model->username;
+            $user->lastname = $model->lastname;
+            $user->firstname = $model->firstname;
+            $user->fathername = $model->fathername;
+            $user->datebirth = $model->datebirth;
+            $user->email = $model->email;            
+            
             $user->password = Yii::$app->security->generatePasswordHash($model->password);
             
             if ($user->save())
