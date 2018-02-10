@@ -155,7 +155,10 @@ class SiteController extends Controller
         }
 
         $model = new RegisterForm();
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) 
+        $key = (new \DateTime())->getTimestamp();         
+         
+            
+        if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->mailActivation(Yii::$app->params['adminEmail'], $key) ) 
         {
             $user = new User();
             $user->username = $model->username;
@@ -163,8 +166,9 @@ class SiteController extends Controller
             $user->firstname = $model->firstname;
             $user->fathername = $model->fathername;
             $user->datebirth = $model->datebirth;
-            $user->email = $model->email;            
-            
+            $user->email = $model->email;      
+            $user->confirmed = 0;                        
+            $user->activation_key = $key;
             $user->password = Yii::$app->security->generatePasswordHash($model->password);
             
             if ($user->save())
@@ -172,12 +176,22 @@ class SiteController extends Controller
                 return $this->goHome();
             }
         }
-
         
         return $this->render('register', [
             'model' => $model,
         ]);
     }
     
+    
+    public function actionActivate()
+    {       
+        $user = User::find()->where(['email'=>$_GET['mail']])->one();
+        if ($user->activation_key == $_GET['key']) {            
+            $user->confirmed = 1;
+            $user->save();            
+            return $this->render('activate');
+        }
+        return $this->goHome;        
+    }
     
 }
