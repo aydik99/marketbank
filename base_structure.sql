@@ -1,4 +1,4 @@
-﻿-- --------------------------------------------------------
+-- --------------------------------------------------------
 -- Хост:                         127.0.0.1
 -- Версия сервера:               5.6.37 - MySQL Community Server (GPL)
 -- Операционная система:         Win32
@@ -26,12 +26,14 @@ CREATE TABLE IF NOT EXISTS `user` (
   `lastname` varchar(30) NOT NULL,
   `firstname` varchar(30) NOT NULL,
   `fathername` varchar(30) NOT NULL,
-  `datebirth` date NOT NULL,
+  `datebirth` varchar(10) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `role` varchar(255) NOT NULL DEFAULT 'user',
+  `confirmed` tinyint(1) DEFAULT '0',
+  `activation_key` varchar(100) NOT NULL,
+  `role` varchar(30) NOT NULL DEFAULT 'user',
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 -- Экспортируемые данные не выделены.
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
