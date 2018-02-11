@@ -8,20 +8,34 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\jui\DatePicker;
 
+$tagline = 'Биржа финансово-банковских услуг';
 $this->title = 'Регистрация';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
+
+    <div class="login-link-wrapper text-center">
+        <a 
+            href="<?=Yii::$app->urlManager->CreateUrl(['site/index']) ?>"
+            class="login-site-link"
+        >
+            <img src="/images/marketbank.png" alt="marketbank logo" class="login-logo">
+            <span>market</span><span>bank</span>
+        </a>
+    </div>
+
+    <h1 class="login-tagline text-center"><?= Html::encode($tagline) ?></h1>
 
     <?php $form = ActiveForm::begin([
         'id' => 'login-form',
         'layout' => 'horizontal',
         'fieldConfig' => [
-            'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>",
-            'labelOptions' => ['class' => 'col-lg-1 control-label'],
+            'template' => "{label}\n<div class=\"col-lg-8\">{input}</div>\n<div class=\"col-lg-12\">{error}</div>",
+            'labelOptions' => ['class' => 'col-lg-4 control-label'],
         ],
     ]); ?>
+
+        <h2 class="text-center"><?= Html::encode($this->title) ?></h2>
 
         <?= $form->field($model, 'lastname')->textInput(['autofocus' => true, 'placeholder'=>'Фамилия']) ?>
         <?= $form->field($model, 'firstname')->textInput(['placeholder'=>'Имя']) ?>
@@ -47,8 +61,8 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= $form->field($model, 'password_again')->passwordInput(['placeholder'=>'Пароль ещё раз']) ?>
 
         <div class="form-group">
-            <div class="col-lg-offset-1 col-lg-11">
-                <?= Html::submitButton('Регистрация', ['class' => 'btn btn-success', 'name' => 'register-button']) ?>
+            <div class="col-lg-12">
+                <?= Html::submitButton('Регистрация', ['class' => 'btn btn-success btn-lg btn-block', 'name' => 'register-button']) ?>
             </div>
         </div>
 

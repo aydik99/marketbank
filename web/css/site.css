@@ -127,7 +127,8 @@ a.desc:after {
     font-family: "Verdana";
 }
 
-.container.login {
+.container.login,
+.container.register {
     background-image: url(/images/login-bg.png);
     background-repeat: no-repeat;
     background-position: 50% 50%;
