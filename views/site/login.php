@@ -49,6 +49,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= Html::submitButton('Войти', ['class' => 'btn btn-primary btn-lg btn-block', 'name' => 'login-button']) ?>
             </div>
         </div>
+        
+        <div class="text-center login-err-message"><?=$model->err_message ?></div>
 
         <div class="text-center" style="color:#999;">
             Ещё не зарегестрированы <a href="<?=Yii::$app->urlManager->CreateUrl(['site/register']) ?>">Регистрация</a>        
