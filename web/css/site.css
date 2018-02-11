@@ -113,3 +113,94 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+
+.btn-primary {
+    background-color: #0092f9;
+}
+
+
+/* Login page */
+
+.site-login {
+    max-width: 676px;
+    margin: 0 auto;
+    font-family: "Verdana";
+}
+
+.container.login {
+    background-image: url(/images/login-bg.png);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: 100% auto;
+}
+
+.login-logo {
+    max-width: 160px;
+}
+
+.login-site-link {
+    text-transform: uppercase;
+    color: rgb(76, 162, 217);
+    font-size: 30px;
+}
+
+.login-site-link img {
+    vertical-align: middle;
+}
+
+.login-site-link:hover {
+    text-decoration: none;
+}
+
+.login-site-link span:last-child {
+    color: #104b92;
+}
+
+.login-site-link:hover span {
+    text-decoration: underline;
+}
+
+.login-link-wrapper {
+    margin-bottom: 80px;
+}
+
+.login-tagline {
+    font-size: 30px;
+    color: rgb(0, 0, 0);
+    margin-bottom: 100px;
+}
+
+.site-login .form-horizontal {
+    border: 2px solid rgb(231, 231, 231);
+    background-color: rgb(250, 250, 250);
+    border-radius: 5px;  
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 10px;
+}
+
+.site-login .btn-block {
+    text-transform: uppercase;
+}
+
+.form-horizontal h2 {
+    margin-top: 20px;
+    margin-bottom: 40px;
+    font-size: 44px;
+}
+
+.site-login .control-label {
+    color: rgb(123, 122, 122);
+    font-size: 30px;
+    font-weight: normal;
+    padding-top: 0;
+    line-height: 34px;
+}
+
+@media (min-width: 768px) {
+    .form-horizontal .control-label {
+        text-align: left;
+    }
+}
+
+/* End login page */

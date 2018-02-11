@@ -62,7 +62,7 @@ AppAsset::register($this);
     NavBar::end();
     ?>
 
-                <div class="container">
+                <div class="container <?php echo Yii::$app->controller->action->id; ?>">
                     <?= Alert::widget() ?>
                         <?= $content ?>
                 </div>

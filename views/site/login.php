@@ -7,39 +7,53 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
-$this->title = 'Вход';
+$tagline = 'Биржа финансово-банковских услуг';
+$this->title = 'Войти';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
+
+    <div class="login-link-wrapper text-center">
+        <a 
+            href="<?=Yii::$app->urlManager->CreateUrl(['site/index']) ?>"
+            class="login-site-link"
+        >
+            <img src="/images/marketbank.png" alt="marketbank logo" class="login-logo">
+            <span>market</span><span>bank</span>
+        </a>
+    </div>
+
+    <h1 class="login-tagline text-center"><?= Html::encode($tagline) ?></h1>
 
     <?php $form = ActiveForm::begin([
         'id' => 'login-form',
         'layout' => 'horizontal',
         'fieldConfig' => [
-            'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>",
-            'labelOptions' => ['class' => 'col-lg-1 control-label'],
+            'template' => "{label}\n<div class=\"col-lg-8\">{input}</div>\n<div class=\"col-lg-12\">{error}</div>",
+            'labelOptions' => ['class' => 'col-lg-4 control-label']
         ],
     ]); ?>
+
+        <h2 class="text-center"><?= Html::encode($this->title) ?></h2>
 
         <?= $form->field($model, 'username')->textInput(['autofocus' => true])->label('Логин') ?>
 
         <?= $form->field($model, 'password')->passwordInput()->label('Пароль') ?>
 
         <?= $form->field($model, 'rememberMe')->checkbox([
-            'template' => "<div class=\"col-lg-offset-1 col-lg-3\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
+            'template' => "<div class=\"col-lg-12\">{input} {label}</div>\n<div class=\"col-lg-12\">{error}</div>",
         ])->label('Запомнить меня') ?>
 
         <div class="form-group">
-            <div class="col-lg-offset-1 col-lg-11">
-                <?= Html::submitButton('Вход', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+            <div class="col-lg-12">
+                <?= Html::submitButton('Войти', ['class' => 'btn btn-primary btn-lg btn-block', 'name' => 'login-button']) ?>
             </div>
+        </div>
+
+        <div class="text-center" style="color:#999;">
+            Ещё не зарегестрированы <a href="<?=Yii::$app->urlManager->CreateUrl(['site/register']) ?>">Регистрация</a>        
         </div>
 
     <?php ActiveForm::end(); ?>
 
-    <div class="col-lg-offset-1" style="color:#999;">
-        Если у вас ещё нет логина, пожалуйста, <a href="<?=Yii::$app->urlManager->CreateUrl(['site/register']) ?>">зарегистируйтесь</a>.
-        
-    </div>
 </div>
