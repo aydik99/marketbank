@@ -66,5 +66,9 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div>
 
+        <div class="text-center" style="color:#999;">
+            Уже зарегестрированны? <a href="<?=Yii::$app->urlManager->CreateUrl(['site/login']) ?>">Войти</a>
+        </div>
+
     <?php ActiveForm::end(); ?>
 </div>
