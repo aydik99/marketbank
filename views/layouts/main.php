@@ -32,7 +32,7 @@ AppAsset::register($this);
 
         <div class="wrap">
             <?php
-    NavBar::begin([
+/*       NavBar::begin([
         //'brandLabel' => Yii::$app->name,
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
@@ -60,7 +60,7 @@ AppAsset::register($this);
         ],
     ]);
     NavBar::end();
-    ?>
+*/   ?>
 
                 <div class="container <?php echo Yii::$app->controller->action->id; ?>">
                     <?= Alert::widget() ?>
