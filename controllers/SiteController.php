@@ -91,7 +91,7 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             
             return $this->goBack();
-        }
+        }        
         return $this->render('login', [
             'model' => $model,
         ]);
@@ -105,7 +105,6 @@ class SiteController extends Controller
     public function actionLogout()
     {
         Yii::$app->user->logout();
-
         return $this->goHome();
     }
 
@@ -189,9 +188,9 @@ class SiteController extends Controller
         if ($user->activation_key == $_GET['key']) {            
             $user->confirmed = 1;
             $user->save();            
-            return $this->render('activate');
+            return $this->render('activate',['good_key'=>true]);
         }
-        return $this->goHome;        
+        return $this->render('activate',['good_key'=>false]);
     }
     
 }
