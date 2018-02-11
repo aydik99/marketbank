@@ -16,6 +16,7 @@ class LoginForm extends Model
     public $username;
     public $password;
     public $rememberMe = true;
+    public $err_message = '';
 
     private $_user = false;
 
@@ -60,8 +61,16 @@ class LoginForm extends Model
     public function login()
     {
         if ($this->validate()) {
-            return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600*24*30 : 0);
-        }
+            
+            $login_result = Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600*24*30 : 0);
+            $user = $this->getUser();
+            if ($user->confirmed == 0) {
+                $this->err_message = 'На ваш e-mail отправлена ссылка активации профиля.';
+                Yii::$app->user->logout();
+                return false;
+            }
+            return $login_result;
+        }        
         return false;
     }
 
