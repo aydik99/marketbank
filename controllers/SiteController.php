@@ -45,8 +45,7 @@ class SiteController extends Controller
      * @inheritdoc
      */
     public function actions()
-    {
-        
+    {        
         return [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
@@ -70,9 +69,8 @@ class SiteController extends Controller
         if (Yii::$app->user->isGuest) {
             return Yii::$app->response->redirect(['site/login']);
         } else {
-            return $this->render('index');    
-        }
-        
+            return Yii::$app->response->redirect(['user/lk']);
+        }        
     }
 
     /**
@@ -83,7 +81,7 @@ class SiteController extends Controller
     public function actionLogin()
     {
         if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
+            return Yii::$app->response->redirect(['user/lk']);
         }
 
         $model = new LoginForm();
@@ -105,7 +103,7 @@ class SiteController extends Controller
     public function actionLogout()
     {
         Yii::$app->user->logout();
-        return $this->goHome();
+        return Yii::$app->response->redirect(['user/login']);
     }
 
     /**
