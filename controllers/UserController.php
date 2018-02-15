@@ -17,31 +17,21 @@ class UserController extends Controller
     public $layout = 'user';
     
     /**
-     * Displays User profile.
-     *
+     * Displays User profile.     
      * @return string
      */
     public function actionAccount()
-    {   
-        if (Yii::$app->user->isGuest) {
-            return Yii::$app->response->redirect(['site/login']);
-        } else {
-            return $this->render('account');    
-        }        
+    {           
+            return Yii::$app->user->isGuest ? self::actionLogin() :  $this->render('account');            
     }
     
     /**
      * Displays User LK.
-     *
      * @return string
      */
     public function actionLk()
     {   
-        if (Yii::$app->user->isGuest) {
-            return Yii::$app->response->redirect(['site/login']);
-        } else {
-            return $this->render('lk');    
-        }        
+         return Yii::$app->user->isGuest ? self::actionLogin() : $this->render('lk');
     }
     
     /**
@@ -49,6 +39,42 @@ class UserController extends Controller
      */
     public function actionLogin(){
            return Yii::$app->response->redirect(['site/login']);
+    }
+    
+    /**
+     * Displays User Credits.
+     * @return string
+     */
+    public function actionCredits()
+    {   
+            return Yii::$app->user->isGuest ? self::actionLogin() :  $this->render('credits');            
+    }
+    
+    /**
+     * Displays User New request for credit
+     * @return string
+     */
+    public function actionNewrequest()
+    {           
+            return Yii::$app->user->isGuest ? self::actionLogin() :  $this->render('newrequest');            
+    }
+    
+    /**
+     * Displays User messages
+     * @return string
+     */
+    public function actionMessages()
+    {           
+            return Yii::$app->user->isGuest ? self::actionLogin() :  $this->render('messages');            
+    }
+    
+    /**
+     * Displays User alerts
+     * @return string
+     */
+    public function actionAlerts()
+    {           
+            return Yii::$app->user->isGuest ? self::actionLogin() :  $this->render('alerts');            
     }
     
     
