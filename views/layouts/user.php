@@ -34,21 +34,21 @@ AppAsset::register($this);
             <div id="logo" class="nav_btn">LOGO</div>
             <div id="nav_menu_links">
                 <div class="nav_btn"><a href="<?=Yii::$app->urlManager->CreateUrl(['user/lk']) ?>">Главная</a></div>
-                <div class="nav_btn"><a href="#credits">Мои кредиты</a></div>
-                <div class="nav_btn"><a href="#myAsk">Подать заявку</a></div>
+                <div class="nav_btn"><a href="<?=Yii::$app->urlManager->CreateUrl(['user/credits']) ?>">Мои кредиты</a></div>
+                <div class="nav_btn"><a href="<?=Yii::$app->urlManager->CreateUrl(['user/newrequest']) ?>">Подать заявку</a></div>
             </div>
             <div id="nav_right_btns">
                 <ul id="ul_right">
-                    <li><a href="">Увед</a>
+                    <li><a href="<?=Yii::$app->urlManager->CreateUrl(['user/alerts']) ?>">Увед</a>
                         <ul id="ul_alrt" class="user_acc_sub">
                             <li><a href="">На вашу заявку 'ИПОТЕКА' поступило предложение от банка ВТБ24.</a></li>
                             <li><a href="">На вашу заявку 'ИПОТЕКА' поступило предложение от банка Альфа-Банк</a></li>
                         </ul>
                     </li>
-                    <li><a href="">Сбщ</a></li>
+                    <li><a href="<?=Yii::$app->urlManager->CreateUrl(['user/messages']) ?>">Сбщ</a></li>
                     <li><a href="">Акк</a>
                         <ul class="user_acc_sub">
-                            <li><a href="">Профиль</a></li>
+                            <li><a href="<?=Yii::$app->urlManager->CreateUrl(['user/account']) ?>">Профиль</a></li>
                             <li>
                                 <?=Html::beginForm(['/site/logout'], 'post') ?>
                                 <?=Html::submitButton('Выход (' . Yii::$app->user->identity->username . ')', ['class' => 'btn btn-link logout']) ?>
