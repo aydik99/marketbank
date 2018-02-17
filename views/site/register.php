@@ -29,6 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php $form = ActiveForm::begin([
         'id' => 'login-form',
         'layout' => 'horizontal',
+        'validateOnBlur'         => false,
         'fieldConfig' => [
             'template' => "{label}\n<div class=\"col-lg-8\">{input}</div>\n<div class=\"col-lg-12\">{error}</div>",
             'labelOptions' => ['class' => 'col-lg-4 control-label'],
@@ -67,7 +68,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
 
         <div class="text-center" style="color:#999;">
-            Уже зарегестрированны? <a href="<?=Yii::$app->urlManager->CreateUrl(['site/login']) ?>">Войти</a>
+            У вас уже есть аккаунт&#63; <a href="<?=Yii::$app->urlManager->CreateUrl(['site/login']) ?>">Войти</a>
         </div>
 
     <?php ActiveForm::end(); ?>
