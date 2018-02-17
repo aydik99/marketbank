@@ -21,7 +21,8 @@ class RegisterForm extends Model
           [['lastname','firstname','fathername','email','datebirth', 'username','password', 'password_again' ],'required','message'=>'Это обязательное поле.'],
             ['password_again','compare','compareAttribute'=>'password','message'=>'Введенные пароли не совпадают.'],
             ['username','unique','targetClass' => User::className(), 'message' => 'Этот логин уже занят.'],
-            ['email','unique','targetClass' => User::className(), 'message' => 'Этот e-mail уже используется.'],            
+            ['email','unique','targetClass' => User::className(), 'message' => 'Этот e-mail уже используется.'],        
+            ['email', 'email','message' => 'Введите корректный e-mail адрес'],
         ];    
     }
     
@@ -47,7 +48,7 @@ class RegisterForm extends Model
             $mailTxt = mb_convert_encoding($mailTxt, 'utf-8', mb_detect_encoding($mailTxt));
             Yii::$app->mailer->compose()
                 ->setTo($this->email)
-                ->setFrom([$email => 'Administrator'])
+                ->setFrom($email)
                 ->setSubject('email activation')
                 ->setTextBody($mailTxt)
                 ->send();
