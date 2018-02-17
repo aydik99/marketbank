@@ -27,7 +27,7 @@
 }
 
 #nav_menu_links {
-    width: 100%;    
+    width: 100%;
 }
 
 #nav_right_btns {
@@ -35,10 +35,10 @@
     width: 300px;
 }
 
-
-
-ul,li,a {
-    list-style: none;  
+ul,
+li,
+a {
+    list-style: none;
     margin: 0;
     padding: 0;
 }
@@ -59,9 +59,9 @@ ul:after {
     float: none;
 }
 
-#ul_right>li{
+#ul_right>li {
     float: left;
-    position: relative;        
+    position: relative;
     text-align: center;
     width: 50px;
     line-height: 38px;
@@ -77,7 +77,10 @@ ul:after {
 #ul_right>li:hover>ul.user_acc_sub {
     display: block;
 }
+
+
 /************************************************/
+
 .user_acc_sub {
     display: none;
     position: absolute;
@@ -85,9 +88,8 @@ ul:after {
 }
 
 #ul_alrt {
-     width: 200px;   
+    width: 200px;
 }
-
 
 #user_alert {
     margin-left: auto;
@@ -101,7 +103,6 @@ ul:after {
 #left_user_block {
     width: 150px;
     max-height: 300px;
-    
     border: 1px solid blue;
     margin-right: 15px;
     padding: 5px;
@@ -113,10 +114,98 @@ ul:after {
 
 #user_photo {
     width: 100px;
-    
 }
 
 #user_content {
     width: 100%;
     border: 1px solid blue;
+}
+
+#profile_main {
+    background-color: #ececec;
+    padding: 100px 80px;
+}
+
+.profile_block {
+    background-color: #fff;
+    padding: 30px;
+    margin-bottom: 100px;
+}
+
+#profile_capt {
+    margin-bottom: 30px;
+}
+
+.profile_caption {
+    font-family: Myriad Pro;
+    font-size: 30px;
+    line-height: 0.9;
+    color: black;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+#profile_ava_left {
+    float: left;
+}
+
+#profile_ava_right{
+    text-align: right;
+}
+
+#profile_ava_right img {
+    width: 300px;
+}
+
+#load_ava,
+#load_docpasport,
+#load_docwork,
+#load_docincome
+{
+    width: 415px;
+    height: 50px;
+    margin-top: 70px;
+    background-color: #fff;
+    border: 1px solid black;
+    font-family: Myriad Pro;
+    text-transform: uppercase;
+    font-size: 30px;
+    line-height: 1.2em;
+    cursor: pointer;
+}
+
+#load_ava:hover,
+#load_docpasport:hover,
+#load_docwork:hover,
+#load_docincome:hover
+{
+    border: 2px solid black;
+}
+
+#user_profile_save_info,
+#user_profile_save_contacts,
+#user_profile_save_pass
+{
+    margin: auto;
+    width: 400px;
+    height: 60px;
+    text-align: center;
+    background-color: #00769d;
+    color: #fff;
+    font-family: Myriad Pro;
+    text-transform: uppercase;
+    font-size: 30px;
+    line-height: 1.2em;    
+}
+
+input {
+    margin: 10px 5px;
+}
+
+label {
+    color: #858585;
+    font-family: Myriad Pro;
+    text-transform: uppercase;
+    font-size: 20px;
+    line-height: 1.2em; 
 }
