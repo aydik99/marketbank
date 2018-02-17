@@ -143,23 +143,17 @@ a.desc:after {
     text-transform: uppercase;
     color: rgb(76, 162, 217);
     font-size: 30px;
+    
 }
 
 .login-site-link img {
     vertical-align: middle;
 }
 
-.login-site-link:hover {
-    text-decoration: none;
-}
-
 .login-site-link span:last-child {
     color: #104b92;
 }
 
-.login-site-link:hover span {
-    text-decoration: underline;
-}
 
 .login-link-wrapper {
     margin-bottom: 80px;
@@ -209,4 +203,7 @@ a.desc:after {
     }
 }
 
+a.login-site-link:hover {
+    text-decoration: none;
+}
 /* End login page */
