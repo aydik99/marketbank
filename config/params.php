@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'adminEmail' => 'marketbank@yandex.ru',
+    'adminEmail' => 'mark.bank.supp@gmail.com',
 ];
