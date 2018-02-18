@@ -35,9 +35,9 @@ $config = [
             'useFileTransport' => false,
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
-                'host' => 'smtp.yandex.ru',
-                'username' => 'marketbank',
-                'password' => 'Qwerty123',
+                'host' => 'smtp.gmail.com',
+                'username' => 'mark.bank.supp@gmail.com',
+                'password' => 'Qwerty12',
                 'port' =>'465',
                 'encryption' => 'ssl',
             ]
