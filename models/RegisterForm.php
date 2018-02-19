@@ -3,6 +3,7 @@ namespace app\models;
 use yii\base\Model;
 use app\models\User;
 use Yii;
+use yii\helpers\Url;
 
 class RegisterForm extends Model 
 {
@@ -43,16 +44,16 @@ class RegisterForm extends Model
     
     public function mailActivation($email,$key)
     {
-        if ($this->validate()) {
-            $mailTxt = "Для активации аккаунта перейдите по ссылке: http://marketbank.ru/site/activate?mail=$this->email&key=$key";
+        if ($this->validate()) {    
+            $home = Url::home(true);
+            $mailTxt = "Для активации аккаунта перейдите по ссылке: $home" . "site/activate?mail=$this->email&key=$key";
             $mailTxt = mb_convert_encoding($mailTxt, 'utf-8', mb_detect_encoding($mailTxt));
-            Yii::$app->mailer->compose()
-                ->setTo($this->email)
+            $msg = Yii::$app->mailer->compose();            
+            $msg->setTo($this->email)
                 ->setFrom($email)
-                ->setSubject('email activation')
+                ->setSubject('Активация профиля')
                 ->setTextBody($mailTxt)
-                ->send();
-
+                ->send();               
             return true;
         }
         return false;
