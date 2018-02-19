@@ -1,38 +1,6 @@
 .center {
-    width: 900px;
+    max-width: 1024px;
     margin: 0 auto;
-}
-
-#user_menu {
-    border: 1px solid blue;
-    height: 40px;
-    margin-bottom: 15px;
-    display: flex;
-    flex-wrap: nowrap;
-}
-
-.nav_btn {
-    background-color: #EEF;
-    margin-left: 10px;
-    line-height: 38px;
-    width: 100px;
-    text-align: center;
-    float: left;
-    height: inherit;
-}
-
-.nav_btn:hover {
-    background-color: #DDD;
-    cursor: pointer;
-}
-
-#nav_menu_links {
-    width: 100%;
-}
-
-#nav_right_btns {
-    height: inherit;
-    width: 300px;
 }
 
 ul,
@@ -43,53 +11,7 @@ a {
     padding: 0;
 }
 
-li {
-    background-color: #eef;
-}
-
-#ul_right {
-    display: block;
-    float: right
-}
-
-ul:after {
-    display: block;
-    content: ' ';
-    clear: both;
-    float: none;
-}
-
-#ul_right>li {
-    float: left;
-    position: relative;
-    text-align: center;
-    width: 50px;
-    line-height: 38px;
-    border-left: 1px solid blue;
-}
-
-.user_acc_sub>li {
-    line-height: normal;
-    padding: 5px;
-    border: 1px solid blue;
-}
-
-#ul_right>li:hover>ul.user_acc_sub {
-    display: block;
-}
-
-
 /************************************************/
-
-.user_acc_sub {
-    display: none;
-    position: absolute;
-    right: 0;
-}
-
-#ul_alrt {
-    width: 200px;
-}
 
 #user_alert {
     margin-left: auto;
@@ -98,27 +20,6 @@ ul:after {
 .user_main {
     display: flex;
     flex-wrap: nowrap;
-}
-
-#left_user_block {
-    width: 150px;
-    max-height: 300px;
-    border: 1px solid blue;
-    margin-right: 15px;
-    padding: 5px;
-}
-
-#user_avatar_block {
-    text-align: center;
-}
-
-#user_photo {
-    width: 100px;
-}
-
-#user_content {
-    width: 100%;
-    border: 1px solid blue;
 }
 
 #profile_main {
@@ -209,3 +110,210 @@ label {
     font-size: 20px;
     line-height: 1.2em; 
 }
+
+body .site-nav {
+    margin-bottom: 60px;
+    border: none;
+}
+
+.site-nav-link {
+    font-size: 20px;
+    font-family: "Verdana";
+    color: rgb(0, 0, 0);
+}
+
+/* Личный кабинет */
+
+body.lk {
+    background-color: #ececec;
+}
+
+.navbar-brand > img {
+    display: inline-block !important;
+    height: 35px;
+}
+
+.lk .navbar {
+    background-color: #fff;
+}
+
+.notifications,
+.requests,
+.how-works {
+    background-color: #fff;
+}
+.notifications h3,
+.requests h3,
+.how-works h3 {
+    font-size: 18px;
+    font-family: "Verdana";
+    color: rgb(0, 0, 0);
+}
+
+.lk .wrap {
+    min-height: calc(100% - 135px);
+}
+
+.notifications .btn-link {
+    padding: 0;
+}
+
+.notifications__footer {
+    text-align: center;
+    background-color: #2c7fec;
+    color: #fff;
+}
+
+.user-info-block {
+    background-color: #fff;
+    padding: 30px 20px;
+}
+
+.user-info-block img {
+    width: 100%;
+}
+
+.requests {
+    margin-top: 50px;
+    padding-top: 5px;
+    padding-bottom: 50px;
+}
+
+.how-works {
+    padding-top: 30px;
+    border-top: 1px solid #cbcbcb;
+}
+
+.how-works__footer {
+    margin-top: 80px;
+    text-align: center;
+    border: 3px solid #2c7fec;
+    
+    font-size: 18px;
+    font-family: "Verdana";
+    color: rgb(0, 0, 0);
+    line-height: 2;
+}
+
+.lk-menu {
+    background-color: #2c7fec;
+}
+
+.lk-menu .badge {
+    position: absolute;
+    top: 10px;
+    right: 0;
+    background-color: #ff0000;
+}
+
+.lk-menu__dropdown {
+    text-align: center !important;
+    min-width: 140px !important;
+}
+
+.navbar-brand,
+.site-nav-link,
+.lk-menu__item {
+    line-height: 75px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.site-nav-link__request {
+    border: 3px dashed #2c7fec;
+    line-height: 69px !important;
+}
+
+.lk-menu__item:hover,
+.lk-menu__item:focus {
+    background-color: transparent !important;
+}
+
+.dropdown.open .arrow-menu-icon {
+    transform: rotate(180deg);
+}
+
+.user-name {
+    font-size: 12px;
+    line-height: 2.5;
+    font-family: "Verdana";
+    color: rgb(0, 0, 0);
+    margin-bottom: 1em;
+    border-bottom: 1px solid #cecece;
+}
+
+.user-block-text {
+    font-size: 12px;
+    font-family: "Verdana";
+    color: rgb(161, 160, 160);
+    line-height: 1;      
+}
+.user-block-text:last-of-type {
+    margin: 0;
+}
+
+.user-block-text span {
+    color: #000;
+}
+
+.notification-delete-btn {
+    padding: 0;
+    width: auto;
+    background-color: transparent;
+    border: none;
+}
+
+.notifications__row {
+    background-color: #ebf1fc;
+    line-height: 28px;
+}
+
+.notifications__row:nth-child(2n) {
+    background-color: #dfe5f1;
+}
+
+.notification__status-icon {
+    line-height: 28px;
+    text-align: center;
+}
+.notification__status-icon img {
+    width: 20px;
+}
+.notifications-list {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+.notifications__footer a {
+    color: #fff;
+}
+.notifications__footer a:hover {
+    color: #fff;
+}
+.request-btn {
+    padding-left: 3em !important;
+    padding-right: 3em !important;
+    border-color: #2c7fec !important;
+    border-width: 2px !important;
+    color: #2c7fec !important;
+    text-transform: uppercase;
+    margin-top: 40px;
+    font-weight: 700 !important;
+}
+.how-works-title {
+    margin-bottom: 20px;
+    text-align: center;
+}
+.how-works-item img {
+    height: 130px;
+    vertical-align: top;
+}
+.how-works-item figcaption {
+    margin-top: 30px;
+    font-size: 18px;
+    font-family: "Verdana";
+    color: rgb(0, 0, 0);
+    line-height: 1.2;      
+}
+/* Конец личного кабинета */

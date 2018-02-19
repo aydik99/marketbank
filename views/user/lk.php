@@ -1,25 +1,95 @@
 <div class="user_main center">
-    <div id="left_user_block">
-        <div id="user_avatar_block">
-            <img id="user_photo" src="../../web/images/ava1.jpg" alt="user photo">
-        </div>
-        Борис
-        <hr> Мои кредиты<br> Всего: 2
-    </div>
-    <div id="user_content">
-       <h2>Это личный кабинет пользователя</h2>
-        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. In, perferendis laudantium molestias voluptates eius modi dolorem fuga, officia atque et rem a alias eligendi doloremque adipisci magni, aliquam, omnis quis.</div>
-        <div>Pariatur eius, nemo, incidunt in ullam quidem magnam ipsa voluptatibus beatae sit eum saepe at vero libero eveniet esse distinctio sunt dolore repudiandae vitae doloribus tempore. In excepturi laboriosam, deleniti.</div>
-        <div>Molestiae, quasi sequi. Nulla harum, omnis nostrum expedita sequi totam fugit velit aut inventore consequuntur, libero dolorem non nobis tempore! Neque quasi soluta, debitis minus sit. Labore sit itaque inventore?</div>
-        <div>Beatae perspiciatis, odit alias fuga necessitatibus magnam incidunt odio nulla laboriosam autem quisquam, neque dolorum et unde quis reiciendis consequuntur iste ut fugit in reprehenderit sapiente aliquam non quasi. Earum!</div>
-        <div>Eligendi nihil officia, delectus ex ea voluptatem voluptatum iusto veniam quibusdam aut ad facere. Dolorum velit a fugit deserunt accusantium tenetur labore quod voluptatum, aspernatur magnam doloribus eum! Minus, enim.</div>
-        <div>Repudiandae est pariatur impedit temporibus labore assumenda voluptatibus ipsum ab error similique voluptatum neque explicabo odit, debitis aliquid fugit sequi earum dolorum, quidem autem libero aspernatur velit ad. Quasi, amet.</div>
-        <div>Soluta voluptas quod itaque perferendis ipsum aliquid architecto praesentium voluptatibus qui omnis, repellat amet, nisi libero! Quos aut, facere iure soluta ad laudantium aliquam doloremque ab quisquam quis, distinctio fugit!</div>
-        <div>Eum consectetur rerum labore sequi consequuntur, necessitatibus error in nam id porro ab quam voluptas, at. Quibusdam vero minus, debitis totam autem tempore consequatur ut, voluptates, odit perferendis minima nisi.</div>
-        <div>Quia asperiores eaque deleniti reprehenderit. Laboriosam aperiam, laborum delectus blanditiis? Eum tempore quasi illum distinctio tenetur eius quam, consequuntur earum. At animi, porro laborum maiores asperiores ad, laudantium explicabo reiciendis.</div>
-        <div>Ipsa, ea iure dolorum eius consequatur vel quo veritatis animi in explicabo quas quasi quaerat quod sapiente qui rerum. Totam illum quaerat laborum iusto, a velit ipsum beatae soluta quasi.</div>
-        <div>Neque, itaque laboriosam animi et unde assumenda ex? Eos expedita consequuntur iste unde sequi doloribus at velit aliquid quibusdam dolorum architecto illum, quaerat. Ipsam consequuntur laborum inventore placeat officiis impedit.</div>
 
+    <div class="col-md-3">
+
+        <div class="user-info-block">
+            <figure>
+                <img src="../../web/images/ava1.jpg" alt="user photo">
+                <figcaption class="user-name">Борис</figcaption>
+            </figure>
+
+            <p class="user-block-text">Мои кредиты</p>
+            <p class="user-block-text">Всего: <span class="pull-right">2</span></p>
+        </div>
+
+    </div>
+
+    <div class="col-md-9">
+       
+        <section class="notifications">
+            <header class="">
+                <span>Уведомления</span>
+                <button type="button" class="btn btn-link" style="float: right">Удалить все</button>
+            </header>
+
+            <ul class="notifications-list">
+                <li class="row notifications__row">
+                    <span class="col-md-1 notification__status-icon">
+                        <img src="/images/icons/ok.png" alt="">
+                    </span>
+                    <a href="#" class="col-md-10">На вашу заявку 'ИПОТЕКА' поступило предложение от банка ВТБ24.</a>
+                    <button class="col-md-1 notification-delete-btn">
+                        <img src="/images/icons/close.png" alt="">
+                    </button>
+                </li>
+                <li class="row notifications__row">
+                    <span class="col-md-1 notification__status-icon">
+                        <img src="/images/icons/ok.png" alt="">
+                    </span>
+                    <a href="#" class="col-md-10">На вашу заявку 'ИПОТЕКА' поступило предложение от банка Альфа-Банк</a>
+                    <button class="col-md-1 notification-delete-btn">
+                        <img src="/images/icons/close.png" alt="">
+                    </button>
+                </li>
+            </ul>
+
+            <div class="notifications__footer">
+                <a href="<?=Yii::$app->urlManager->CreateUrl(['user/alerts']) ?>">Посмотреть ещё</a></li>
+            </div>
+        </section>
+
+
+
+        <section class="requests">
+            <h3 class="text-center">В настоящий момент у вес нет созданных заявок</h3>
+            <div class="text-center">
+                <a 
+                    href="<?=Yii::$app->urlManager->CreateUrl(['user/newrequest']) ?>"
+                    class="btn btn-default request-btn"
+                >Подать заявку</a>
+            </div>
+        </section>
+
+
+
+        <section class="how-works">
+            <h3 class="how-works-title">Как это работает</h3>
+
+            <ul class="row text-center">
+                <li class="col-xs-12 col-md-4">
+                    <figure class="how-works-item">
+                        <img src="/images/lk/how-works-1.png" alt="">
+                        <figcaption>Вы размещаете заказ</figcaption>
+                    </figure>
+                </li>
+                <li class="col-xs-12 col-md-4">
+                    <figure class="how-works-item">
+                        <img src="/images/lk/how-works-2.png" alt="">
+                        <figcaption>Выбираете выгодное предложение</figcaption>
+                    </figure>
+                </li>
+                <li class="col-xs-12 col-md-4">
+                    <figure class="how-works-item">
+                        <img src="/images/lk/how-works-3.png" alt="">
+                        <figcaption>Получаете кредит!</figcaption>
+                    </figure>
+                </li>
+            </ul>
+
+            <footer class="how-works__footer">
+                Если у вас возникли трудности обратитесь в <a href="#">службу поддержки</a>
+            </footer>
+        </section>
 
     </div>
 

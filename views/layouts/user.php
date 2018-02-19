@@ -28,37 +28,96 @@ AppAsset::register($this);
             <?php $this->head() ?>
     </head>
 
-    <body>
+    <body class="<?php echo Yii::$app->controller->action->id; ?>">
         <?php $this->beginBody() ?>
-        <nav id='user_menu' class='center'>
-            <div id="logo" class="nav_btn">LOGO</div>
-            <div id="nav_menu_links">
-                <div class="nav_btn"><a href="<?=Yii::$app->urlManager->CreateUrl(['user/lk']) ?>">Главная</a></div>
-                <div class="nav_btn"><a href="<?=Yii::$app->urlManager->CreateUrl(['user/credits']) ?>">Мои кредиты</a></div>
-                <div class="nav_btn"><a href="<?=Yii::$app->urlManager->CreateUrl(['user/newrequest']) ?>">Подать заявку</a></div>
-            </div>
-            <div id="nav_right_btns">
-                <ul id="ul_right">
-                    <li><a href="<?=Yii::$app->urlManager->CreateUrl(['user/alerts']) ?>">Увед</a>
-                        <ul id="ul_alrt" class="user_acc_sub">
-                            <li><a href="">На вашу заявку 'ИПОТЕКА' поступило предложение от банка ВТБ24.</a></li>
-                            <li><a href="">На вашу заявку 'ИПОТЕКА' поступило предложение от банка Альфа-Банк</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="<?=Yii::$app->urlManager->CreateUrl(['user/messages']) ?>">Сбщ</a></li>
-                    <li><a href="">Акк</a>
-                        <ul class="user_acc_sub">
-                            <li><a href="<?=Yii::$app->urlManager->CreateUrl(['user/account']) ?>">Профиль</a></li>
-                            <li>
-                                <?=Html::beginForm(['/site/logout'], 'post') ?>
-                                <?=Html::submitButton('Выход (' . Yii::$app->user->identity->username . ')', ['class' => 'btn btn-link logout']) ?>
-                                <?=Html::endForm() ?>
-                                
-                            </li>
-                        </ul>
+        <nav id='user_menu' class='navbar site-nav'>
+            <div class="container-fluid center">
 
-                    </li>
-                </ul>
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="<?=Yii::$app->urlManager->CreateUrl(['site/index']) ?>">
+                        <img src="/images/marketbank.png" alt="marketbank logo" class="login-logo">
+                        <span>market</span><span>bank</span>
+                    </a>
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a 
+                                href="<?=Yii::$app->urlManager->CreateUrl(['user/lk']) ?>"
+                                class="site-nav-link"
+                            >Главная</a>
+                        </li>
+                        <li>
+                            <a 
+                                href="<?=Yii::$app->urlManager->CreateUrl(['user/credits']) ?>"
+                                class="site-nav-link"
+                            >Мои кредиты</a>
+                        </li>
+                        <li>
+                            <a 
+                                href="<?=Yii::$app->urlManager->CreateUrl(['user/newrequest']) ?>"
+                                class="site-nav-link site-nav-link__request"
+                            >Подать заявку</a>
+                        </li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right lk-menu">
+
+                        <li class="dropdown">
+                            <a 
+                                href="#" 
+                                class="dropdown-toggle lk-menu__item"
+                                data-toggle="dropdown" 
+                                role="button" 
+                                aria-haspopup="true" 
+                                aria-expanded="false"
+                            >
+                                <img src="/images/icons/alert.png" alt="Уведомления">
+                                <span class="badge">4</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">На вашу заявку 'ИПОТЕКА' поступило предложение от банка ВТБ24.</a></li>
+                                <li><a href="#">На вашу заявку 'ИПОТЕКА' поступило предложение от банка Альфа-Банк</a></li>
+                                <li><a href="<?=Yii::$app->urlManager->CreateUrl(['user/alerts']) ?>">Все уведомления</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a
+                                href="<?=Yii::$app->urlManager->CreateUrl(['user/messages']) ?>"
+                                class="lk-menu__item"
+                            >
+                                <img src="/images/icons/mails.png" alt="Уведомления">
+                                <span class="badge">2</span>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a
+                                href="#"
+                                class="dropdown-toggle lk-menu__item"
+                                data-toggle="dropdown"
+                                role="button"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                            >
+                                <img src="/images/user-acc.png" alt="аватар пользователя">
+                                <img src="/images/icons/arrow.png" alt="стрелка" class="arrow-menu-icon">
+                            </a>
+                            <ul class="dropdown-menu lk-menu__dropdown">
+                                <li><a href="<?=Yii::$app->urlManager->CreateUrl(['user/account']) ?>">Профиль</a></li>
+                                <li>
+                                    <?=Html::beginForm(['/site/logout'], 'post') ?>
+                                    <?=Html::submitButton('Выход (' . Yii::$app->user->identity->username . ')', ['class' => 'btn btn-link logout']) ?>
+                                    <?=Html::endForm() ?>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+
+                </div>
+
             </div>
         </nav>
 
@@ -82,4 +141,5 @@ AppAsset::register($this);
     </body>
 
     </html>
+    <?php $this->registerJsFile('../../web/scripts/user.js',  ['position' => yii\web\View::POS_END]); ?>
     <?php $this->endPage() ?>
