@@ -24,7 +24,6 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
                 return new static($user);
             }
         }
-
         return null;
     }
 
@@ -51,8 +50,8 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
      * @inheritdoc
      */
     public function getAuthKey()
-    {
-        return $this->authKey;
+    {           
+        return $this->activation_key;
     }
 
     /**
@@ -60,7 +59,7 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
      */
     public function validateAuthKey($authKey)
     {
-        return $this->authKey === $authKey;
+        return $this->activation_key === $authKey;
     }
 
     /**
