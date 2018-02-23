@@ -5,7 +5,9 @@
         <div class="user-info-block">
             <figure>
                 <img src="../../web/images/ava1.jpg" alt="user photo">
-                <figcaption class="user-name">Борис</figcaption>
+                <figcaption class="user-name">
+                    <?=$human->lastname?>&nbsp;<?=$human->firstname?>&nbsp;<?=$human->fathername?>                    
+                </figcaption>
             </figure>
 
             <p class="user-block-text">Мои кредиты</p>
@@ -44,7 +46,7 @@
             </ul>
 
             <div class="notifications__footer">
-                <a href="<?=Yii::$app->urlManager->CreateUrl(['user/alerts']) ?>">Посмотреть ещё</a></li>
+                <a href="<?=Yii::$app->urlManager->CreateUrl(['user/alerts']) ?>">Посмотреть ещё</a>
             </div>
         </section>
 
