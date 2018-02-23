@@ -3,6 +3,11 @@ body {
     height: 100%;
 }
 
+
+body {
+    background-color: #ececec;
+}
+
 .wrap {
     min-height: 100%;
     height: auto;
@@ -207,3 +212,8 @@ a.login-site-link:hover {
     text-decoration: none;
 }
 /* End login page */
+
+
+.navbar {
+    background-color: #fff;
+}

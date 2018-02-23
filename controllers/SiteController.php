@@ -155,7 +155,8 @@ class SiteController extends Controller
         $key = (new \DateTime())->getTimestamp();         
          
             
-        if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->mailActivation(Yii::$app->params['adminEmail'], $key) ) 
+        // if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->mailActivation(Yii::$app->params['adminEmail'], $key) ) 
+        if ($model->load(Yii::$app->request->post()) && $model->validate() )
         {
             $user = new User();
             $user->username = $model->username;

@@ -124,17 +124,9 @@ body .site-nav {
 
 /* Личный кабинет */
 
-body.lk {
-    background-color: #ececec;
-}
-
 .navbar-brand > img {
     display: inline-block !important;
     height: 35px;
-}
-
-.lk .navbar {
-    background-color: #fff;
 }
 
 .notifications,
@@ -317,3 +309,44 @@ body.lk {
     line-height: 1.2;      
 }
 /* Конец личного кабинета */
+
+
+/* Страница кредитов */
+body .list-group-item {
+    border: none;
+}
+body .list-group-item:hover {
+    cursor: pointer;
+}
+
+.credit-item {
+    background-color: #fff;
+    text-transform: uppercase;
+    font-family: "Verdana";
+
+    margin-bottom: 60px;
+}
+
+.credit-item__content {
+    padding: 40px 30px;
+    color: rgb(156, 156, 156);
+    font-size: 20px;
+    line-height: 1.2;      
+}
+
+.credit-item__footer {
+    padding-left: 30px;
+    padding-right: 30px;
+    border: 1px solid #000;
+}
+
+.credit-item__header {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ececec;
+}
+
+.credit-item__header h2 {
+    margin: 0;
+}
+/* конец страницы кредитов */
