@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `ask` (
   `summa` varchar(20) NOT NULL,
   `id_type` int(10) NOT NULL,
   `id_human` int(10) NOT NULL,
-  `closed` tinyint(4) NOT NULL DEFAULT '0',
+  `closed` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_ask`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -56,7 +56,8 @@ CREATE TABLE IF NOT EXISTS `bank` (
 -- Дамп структуры для таблица marketbase.human
 DROP TABLE IF EXISTS `human`;
 CREATE TABLE IF NOT EXISTS `human` (
-  `id_human` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id_human` int(10) unsigned NOT NULL,
+  `avatar` varchar(50) DEFAULT NULL,
   `lastname` varchar(30) NOT NULL,
   `firstname` varchar(30) NOT NULL,
   `fathername` varchar(30) NOT NULL,
@@ -73,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `messages` (
   `id_from` int(10) NOT NULL,
   `id_to` int(10) NOT NULL,
   `text` varchar(300) NOT NULL,
-  `new` tinyint(4) NOT NULL DEFAULT '0',
+  `new` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_msg`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -84,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `suggest` (
   `id_sug` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `text_sug` varchar(300) NOT NULL,
   `id_ask` int(10) NOT NULL,
-  `new` tinyint(4) NOT NULL DEFAULT '0',
+  `new` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id_sug`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -101,7 +102,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `role` varchar(30) NOT NULL DEFAULT 'user',
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
 
 -- Экспортируемые данные не выделены.
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
