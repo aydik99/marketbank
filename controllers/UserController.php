@@ -11,6 +11,7 @@ use app\models\LoginForm;
 use app\models\RegisterForm;
 use app\models\ContactForm;
 use app\models\User;
+use app\models\Human;
 
 class UserController extends Controller
 {
@@ -22,7 +23,9 @@ class UserController extends Controller
      */
     public function actionAccount()
     {           
-            return Yii::$app->user->isGuest ? self::actionLogin() :  $this->render('account');            
+        $human = Human::findOne(Yii::$app->user->identity->id);
+    
+        return Yii::$app->user->isGuest ? self::actionLogin() :  $this->render('account', ['human'=>$human]);            
     }
     
     /**
@@ -31,7 +34,8 @@ class UserController extends Controller
      */
     public function actionLk()
     {   
-         return Yii::$app->user->isGuest ? self::actionLogin() : $this->render('lk');
+        $human = Human::findOne(Yii::$app->user->identity->id);
+        return Yii::$app->user->isGuest ? self::actionLogin() : $this->render('lk',['human'=>$human]);
     }
     
     /**
