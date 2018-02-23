@@ -11,6 +11,7 @@ use app\models\LoginForm;
 use app\models\RegisterForm;
 use app\models\ContactForm;
 use app\models\User;
+use app\models\Human;
 
 class SiteController extends Controller
 {
@@ -151,7 +152,7 @@ class SiteController extends Controller
             return $this->goHome();
         }
 
-        $model = new RegisterForm();
+        $model = new RegisterForm();        
         $key = (new \DateTime())->getTimestamp();         
          
             
@@ -159,19 +160,26 @@ class SiteController extends Controller
         // if ($model->load(Yii::$app->request->post()) && $model->validate() )
         {
             $user = new User();
-            $user->username = $model->username;
-            $user->lastname = $model->lastname;
-            $user->firstname = $model->firstname;
-            $user->fathername = $model->fathername;
-            $user->datebirth = $model->datebirth;
+            $user->username = $model->username;            
             $user->email = $model->email;      
             $user->confirmed = 0;                        
             $user->activation_key = $key;
             $user->password = Yii::$app->security->generatePasswordHash($model->password);
             
+            
+            
             if ($user->save())
             {
-                return $this->goHome();
+                $human = new Human();
+                $human->id_human = $user->id;
+                $human->lastname = $model->lastname;
+                $human->firstname = $model->firstname;
+                $human->fathername = $model->fathername;
+                $human->datebirth = $model->datebirth;
+                
+                if ($human->save()) {
+                    return $this->goHome();    
+                }    
             }
         }
         
