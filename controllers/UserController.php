@@ -80,6 +80,15 @@ class UserController extends Controller
     {           
             return Yii::$app->user->isGuest ? self::actionLogin() :  $this->render('alerts');            
     }
+
+    /**
+     * Displays User notification
+     * @return string
+     */
+    public function actionNotification()
+    {           
+            return Yii::$app->user->isGuest ? self::actionLogin() :  $this->render('notification');            
+    }
     
     
 }

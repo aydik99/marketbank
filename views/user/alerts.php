@@ -18,7 +18,7 @@ $this->title = 'Уведомления';
                 <span class="col-md-1 notification__status-icon">
                     <img src="/images/icons/ok.png" alt="">
                 </span>
-                <a href="#" class="col-md-10">На вашу заявку 'ИПОТЕКА' поступило предложение от банка ВТБ24.</a>
+                <a href="<?=Yii::$app->urlManager->CreateUrl(['user/notification']) ?>" class="col-md-10">На вашу заявку 'ИПОТЕКА' поступило предложение от банка ВТБ24.</a>
                 <button class="col-md-1 notification-delete-btn">
                     <img src="/images/icons/close.png" alt="">
                 </button>
@@ -28,7 +28,7 @@ $this->title = 'Уведомления';
                 <span class="col-md-1 notification__status-icon">
                     <img src="/images/icons/ok.png" alt="">
                 </span>
-                <a href="#" class="col-md-10">На вашу заявку 'ИПОТЕКА' поступило предложение от банка Альфа-Банк</a>
+                <a href="<?=Yii::$app->urlManager->CreateUrl(['user/notification']) ?>" class="col-md-10">На вашу заявку 'ИПОТЕКА' поступило предложение от банка Альфа-Банк</a>
                 <button class="col-md-1 notification-delete-btn">
                     <img src="/images/icons/close.png" alt="">
                 </button>
