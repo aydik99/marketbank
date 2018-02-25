@@ -21,7 +21,7 @@
         <section class="notifications">
             <header class="">
                 <span>Уведомления</span>
-                <button type="button" class="btn btn-link" style="float: right">Удалить все</button>
+                <button type="button" class="btn btn-link pull-right">Удалить все</button>
             </header>
 
             <ul class="notifications-list">
