@@ -24,8 +24,17 @@ class UserController extends Controller
     public function actionAccount()
     {           
         $human = Human::findOne(Yii::$app->user->identity->id);
+        $user = User::findOne(Yii::$app->user->identity->id);
+        
+        if ($human->load(Yii::$app->request->post()) && $human->validate()){            
+            $human->save();
+        }
+        
+        if ($user->load(Yii::$app->request->post()) && $user->validate()){            
+            $user->save();
+        }
     
-        return Yii::$app->user->isGuest ? self::actionLogin() :  $this->render('account', ['human'=>$human]);            
+        return Yii::$app->user->isGuest ? self::actionLogin() :  $this->render('account', ['human'=>$human, 'user'=>$user]);            
     }
     
     /**
