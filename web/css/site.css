@@ -221,3 +221,12 @@ a.login-site-link:hover {
 .bg-white {
     background-color: #fff;
 }
+
+.pad-30 {
+    padding: 30px;
+}
+
+.marg-tb-20 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
