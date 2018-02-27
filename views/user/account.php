@@ -94,25 +94,6 @@ $this->title = 'Профиль';
                 <?php ActiveForm::end(); ?>
         </div>
        
-       
-<!--       
-        <div class="bg-white pad-30 marg-tb-20">
-            <h2 class="profile-section-title">Контакты</h2>
-            <form action="" class="text-center">
-                <div class="row">
-                    <div class="form-group col-sm-6 col-md-4">
-                        <label for="email">Email</label>
-                        <input name="email" type="text" class="form-control" id="email" value="<?= $human->getEmail(); ?>">
-                    </div>
-                    <div class="form-group col-sm-6 col-md-4">
-                        <label for="phone">Телефон</label>
-                        <input name="phone" type="text" class="form-control" id="phone" value="<?= $human->tel; ?>">
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary">Сохранить</button>
-            </form>
-        </div>
--->
         <div class="bg-white pad-30 marg-tb-20">
             <h2 class="profile-section-title">Сменить пароль</h2>
             <form action="" class="text-center">
