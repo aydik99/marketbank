@@ -166,8 +166,6 @@ class SiteController extends Controller
             $user->activation_key = $key;
             $user->password = Yii::$app->security->generatePasswordHash($model->password);
             
-            
-            
             if ($user->save())
             {
                 $human = new Human();
@@ -178,6 +176,7 @@ class SiteController extends Controller
                 $human->datebirth = $model->datebirth;
                 
                 if ($human->save()) {
+                    \Yii::$app->getSession()->setFlash('needConfirm','На Ваш email отправлена ссылка активации.');
                     return $this->goHome();    
                 }    
             }
