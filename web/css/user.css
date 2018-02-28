@@ -17,6 +17,16 @@ a {
     margin-left: auto;
 }
 
+.alert_good,
+.alert_error {
+    background-color: palegreen;
+    padding: 0 30px;
+}
+
+.alert_error {
+    background-color: firebrick;
+}
+
 .user_main {
     display: flex;
     flex-wrap: nowrap;
@@ -308,6 +318,16 @@ body .site-nav {
     color: rgb(0, 0, 0);
     line-height: 1.2;      
 }
+
+.profile-image {
+    float: right;    
+}
+
+#ava {
+    max-height: 150px;
+    margin-top: 30px;
+}
+
 /* Конец личного кабинета */
 
 
