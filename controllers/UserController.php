@@ -12,6 +12,8 @@ use app\models\RegisterForm;
 use app\models\ContactForm;
 use app\models\User;
 use app\models\Human;
+use app\models\UploadAvatar;
+use yii\web\UploadedFile;
 
 class UserController extends Controller
 {
@@ -25,16 +27,41 @@ class UserController extends Controller
     {           
         $human = Human::findOne(Yii::$app->user->identity->id);
         $user = User::findOne(Yii::$app->user->identity->id);
+        $upload = new UploadAvatar();
         
+        
+        // Загрузка Аватарки
+        if (Yii::$app->request->post()) {
+            $upload->file = UploadedFile::getInstance($upload,'file');
+            if ($upload->validate()){
+                $path = Yii::$app->params['avaUpload'];
+                $filename = $key = (new \DateTime())->getTimestamp() . '.' . $upload->file->extension;         
+                $upload->file->saveAs($path . $filename );                
+                $human->avatar = $path . $filename;
+                if ($human->save()) {
+                    \Yii::$app->getSession()->setFlash('saved','Фото успешно загружено.');    
+                }                
+            }            
+        }
+        
+        // сохранение данных в модель Human
         if ($human->load(Yii::$app->request->post()) && $human->validate()){            
+            \Yii::$app->getSession()->setFlash('saved','Данные успешно сохранены.').
             $human->save();
         }
         
-        if ($user->load(Yii::$app->request->post()) && $user->validate()){            
+        // сохранение данных в модель User
+        if ($user->load(Yii::$app->request->post()) && $user->validate()){  
+            \Yii::$app->getSession()->setFlash('saved','На Ваш email отправлена ссылка активации.').
             $user->save();
         }
     
-        return Yii::$app->user->isGuest ? self::actionLogin() :  $this->render('account', ['human'=>$human, 'user'=>$user]);            
+        return Yii::$app->user->isGuest ? self::actionLogin() :  $this->render('account', 
+                [
+                    'human'=>$human, 
+                    'user'=>$user,
+                    'upload'=>$upload
+                ]);            
     }
     
     /**
