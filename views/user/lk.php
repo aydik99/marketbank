@@ -4,7 +4,7 @@
 
         <div class="user-info-block">
             <figure>
-                <img src="../../web/images/ava1.jpg" alt="user photo">
+                <img src="<?=$human->avatar?>" alt="user photo">
                 <figcaption class="user-name">
                     <?=$human->lastname?>&nbsp;<?=$human->firstname?>&nbsp;<?=$human->fathername?>                    
                 </figcaption>
