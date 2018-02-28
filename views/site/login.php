@@ -23,7 +23,11 @@ $this->params['breadcrumbs'][] = $this->title;
         <h1 class="login-tagline text-center">
             <?= Html::encode($tagline) ?>
         </h1>
-
+        
+        <div class="alert_good marg-tb-20">
+            <?= Yii::$app->session->getFlash('needConfirm'); ?>
+        </div>
+        
         <?php $form = ActiveForm::begin([
         'id' => 'login-form',
         'layout' => 'horizontal',
