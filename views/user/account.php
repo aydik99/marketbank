@@ -7,22 +7,30 @@ use yii\jui\DatePicker;
 /* @var $this yii\web\View */
 
 $this->title = 'Профиль';
-?> 
+?>
     <div class="site-index center">
 
         <h1 class="bg-white  pad-30 profile-title">Личные данные</h1>
 
+        <div class="alert_good marg-tb-20">
+            <?= Yii::$app->session->getFlash('saved'); ?>
+        </div>
+
         <div class="bg-white pad-30 marg-tb-20">
+            <div class="profile-image">
+                <img src="<?=$human->avatar?>" id="ava" alt="avatar">
+            </div>
             <h2>Аватар</h2>
-
-            <div class="form-group">
-                <label for="photoFile">Загрузить фото</label>
-                <input type="file" id="photoFile">
-            </div>
-
-            <div class="profile-image pull-right">
-                <img src="/images/icons/close.png" alt="">
-            </div>
+                        
+            <?php
+            $avaUpload = ActiveForm::begin([
+                'options'=>['enctype'=>'multipart/form-data']
+            ]); ?>
+        
+            <?= $avaUpload->field($upload, 'file')->fileInput(); ?>
+            <?= Html::submitButton('Загрузить', ['class' => 'btn btn-primary']) ?>
+            
+            <?php ActiveForm::end();  ?>           
         </div>
 
         <div class="bg-white pad-30 marg-tb-20">
@@ -44,11 +52,11 @@ $this->title = 'Профиль';
                 </div>
 
                 <div class="form-group col-sm-6 col-md-4">
-                    <?= $form->field($human, 'fathername')->textInput(['class'=>'form-control', 'id'=>'firstname'])->label('Отчество') ?>
+                    <?= $form->field($human, 'fathername')->textInput(['class'=>'form-control', 'id'=>'fathername'])->label('Отчество') ?>
                 </div>
 
                 <div class="form-group col-sm-6 col-md-12">
-                   
+
                     <?= $form->field($human, 'datebirth')->widget(DatePicker::className(), [ 
                         'dateFormat' => 'dd.MM.yyyy',
                         'clientOptions'=> [
@@ -93,7 +101,7 @@ $this->title = 'Профиль';
             <?= Html::submitButton('Сохранить', ['class' => 'btn btn-primary']) ?>
                 <?php ActiveForm::end(); ?>
         </div>
-       
+
         <div class="bg-white pad-30 marg-tb-20">
             <h2 class="profile-section-title">Сменить пароль</h2>
             <form action="" class="text-center">
