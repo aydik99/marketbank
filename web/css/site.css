@@ -218,15 +218,31 @@ a.login-site-link:hover {
     background-color: #fff;
 }
 
-.bg-white {
-    background-color: #fff;
-}
-
-.pad-30 {
-    padding: 30px;
-}
-
 .marg-tb-20 {
     margin-top: 20px;
     margin-bottom: 20px;
+}
+
+.profile-section {
+    padding: 30px 50px;
+    background-color: #fff;
+    margin-bottom: 60px;
+}
+
+.profile-title {
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    font-size: 40px;
+    font-family: "Myriad Pro";
+    color: rgb(0, 0, 0);
+    line-height: 1;
+}
+
+.profile-section-title {
+    font-size: 36px;
+    font-family: "Myriad Pro";
+    color: rgb(0, 0, 0);
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 80px;
 }

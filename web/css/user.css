@@ -370,3 +370,76 @@ body .list-group-item:hover {
     margin: 0;
 }
 /* конец страницы кредитов */
+
+/* Личные данные */
+
+.account input[type="file"] {
+    display: none;
+}
+
+.account .btn-primary {
+    background-color: rgb(0, 118, 157);
+    width: 400px;
+
+    font-size: 30px;
+    font-family: "Myriad Pro";
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    line-height: 1.5;
+    padding: 0;
+    text-align: center;
+
+    margin-bottom: 20px;
+}
+
+.account .btn-primary:hover {
+    background-color: rgb(25, 142, 180);
+}
+
+.input-label {
+    font-size: 24px;
+    font-family: "Myriad Pro";
+    font-weight: normal;
+    color: rgb(133, 133, 133);
+    text-transform: uppercase;
+    line-height: 1.2;
+    margin: 0;
+    display: block;
+}
+
+.account .form-group {
+    margin-bottom: 30px;
+}
+
+.form-justify {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-justify .form-group {
+    margin-bottom: 0;
+}
+
+/* Конец личных данных */
+
+
+
+.custom-label label {
+    border: 5px solid #000;
+    padding: 20px 10px 20px 60px;
+    line-height: 1;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-family: "Myriad Pro";
+    font-weight: normal;
+    color: #000;
+    background-image: url(/images/backgrounds/download.png);
+    background-repeat: no-repeat;
+    background-position: -10px 50%;
+    background-size: 80px auto;
+}
+
+.custom-label label:hover {
+    cursor: pointer;
+}
