@@ -173,6 +173,8 @@ body .site-nav {
 
 .user-info-block img {
     width: 100%;
+    display: block;
+    min-height: 60px;
 }
 
 .requests {
@@ -443,3 +445,91 @@ body .list-group-item:hover {
 .custom-label label:hover {
     cursor: pointer;
 }
+
+
+/* подать заявку */
+
+.bg-white {
+    background-color: #fff;
+}
+
+.order-title {
+    margin: 0;
+    font-size: 30px;
+    font-family: "Verdana";
+    color: rgb(0, 0, 0);
+    line-height: 2;
+}
+
+.order-title--main {
+    margin-bottom: 70px;
+    border: none;
+}
+
+.order-form {
+    padding: 0 40px 20px 60px;
+}
+
+.order-step-group {
+    counter-reset: orderStepSounter;
+}
+
+.order-step {
+    font-size: 22px;
+    font-family: "Verdana";
+    color: rgb(127, 127, 127);
+    line-height: 1.2;      
+}
+
+.order-step:before {
+    counter-increment: orderStepSounter;
+    content: counter(orderStepSounter);
+    border: 1px solid rgb(127, 127, 127);
+    border-radius: 50%;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    margin-right: 1em;
+}
+
+.order-description {
+    resize: none;
+}
+
+.order-description-block {
+    margin-top: 40px;
+}
+
+.order-description-title {
+    margin-bottom: 10px;
+}
+
+.order-label {
+    padding-left: 0;
+    margin: 0;
+    line-height: 34px;
+}
+
+.order-input {
+    margin: 0;
+}
+
+.order-file-btn {
+    border-width: 3px;
+    border-color: rgb(228, 228, 228);
+    border-style: solid;
+    background-color: rgb(228, 228, 228);
+    font-family: "Verdana";
+    font-size: 16px;
+    color: rgb(141, 141, 141);
+    line-height: 2;
+    background-image: url(/images/backgrounds/attach.png);
+    background-repeat: no-repeat;
+    background-position: 5px 50%;
+    background-size: 40px auto;
+    padding-left: 55px;
+    margin-bottom: 40px;
+}
+
+/* Конец страницы "подать заявку" */
