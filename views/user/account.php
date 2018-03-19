@@ -29,6 +29,7 @@ $this->title = 'Профиль';
         
             <div class="custom-label">
                 <?= $avaUpload->field($upload, 'file')->fileInput(); ?>
+                <?= $avaUpload->field($reqtype, 'requestType')->hiddenInput(['value'=> 'avatar'])->label(false); ?>
             </div>
 
             <div class="text-center">
@@ -40,7 +41,7 @@ $this->title = 'Профиль';
 
         <div class="profile-section">
             <h2 class="profile-section-title">Основная информация</h2>
-            <?php $form = ActiveForm::begin([
+            <?php $main = ActiveForm::begin([
                 'action' => '',
                 'options' => [
                     'class' => 'text-center'    
@@ -49,20 +50,21 @@ $this->title = 'Профиль';
 
             <div class="row">
                 <div class="form-group col-sm-6 col-md-4">
-                    <?= $form->field($human, 'lastname')->textInput(['class'=>'form-control', 'id'=>'lastname'])->label('Фамилия', ["class" => "input-label"]) ?>
+                    <?= $main->field($human, 'lastname')->textInput(['class'=>'form-control', 'id'=>'lastname'])->label('Фамилия', ["class" => "input-label"]) ?>
+                    <?= $main->field($reqtype, 'requestType')->hiddenInput(['value'=> 'mainInfo'])->label(false); ?>
                 </div>
 
                 <div class="form-group col-sm-6 col-md-4">
-                    <?= $form->field($human, 'firstname')->textInput(['class'=>'form-control', 'id'=>'firstname'])->label('Имя', ["class" => "input-label"]) ?>
+                    <?= $main->field($human, 'firstname')->textInput(['class'=>'form-control', 'id'=>'firstname'])->label('Имя', ["class" => "input-label"]) ?>
                 </div>
 
                 <div class="form-group col-sm-6 col-md-4">
-                    <?= $form->field($human, 'fathername')->textInput(['class'=>'form-control', 'id'=>'fathername'])->label('Отчество', ["class" => "input-label"]) ?>
+                    <?= $main->field($human, 'fathername')->textInput(['class'=>'form-control', 'id'=>'fathername'])->label('Отчество', ["class" => "input-label"]) ?>
                 </div>
 
                 <div class="form-group col-sm-6 col-md-12">
 
-                    <?= $form->field($human, 'datebirth')->widget(DatePicker::className(), [
+                    <?= $main->field($human, 'datebirth')->widget(DatePicker::className(), [
                         'dateFormat' => 'dd.MM.yyyy',
                         'clientOptions'=> [
                             'defaultDate' => $human->datebirth,                            
@@ -86,7 +88,7 @@ $this->title = 'Профиль';
 
         <div class="profile-section">
             <h2 class="profile-section-title">Контакты</h2>
-            <?php $form = ActiveForm::begin([
+            <?php $contacts = ActiveForm::begin([
                 'action' => '',
                 'options' => [
                     'class' => 'text-center'    
@@ -95,11 +97,12 @@ $this->title = 'Профиль';
 
             <div class="row">
                 <div class="form-group col-sm-6 col-md-4 col-md-offset-2">
-                    <?= $form->field($user, 'email')->textInput(['class'=>'form-control', 'id'=>'email'])->label('E-mail', ["class" => "input-label"]) ?>
+                    <?= $contacts->field($user, 'email')->textInput(['class'=>'form-control', 'id'=>'email'])->label('E-mail', ["class" => "input-label"]) ?>
+                    <?= $contacts->field($reqtype, 'requestType')->hiddenInput(['value'=> 'contacts'])->label(false); ?>
                 </div>
 
                 <div class="form-group col-sm-6 col-md-4">
-                    <?= $form->field($human, 'tel')->textInput(['class'=>'form-control', 'id'=>'tel'])->label('Телефон', ["class" => "input-label"]) ?>
+                    <?= $contacts->field($human, 'tel')->textInput(['class'=>'form-control', 'id'=>'tel'])->label('Телефон', ["class" => "input-label"]) ?>
                 </div>
             </div>
             <?= Html::submitButton('Сохранить', ['class' => 'btn btn-primary']) ?>
@@ -109,7 +112,12 @@ $this->title = 'Профиль';
 
         <div class="profile-section">
             <h2 class="profile-section-title">Сменить пароль</h2>
-            <form action="" class="text-center">
+            <?php $pass = ActiveForm::begin([
+                'action' => '',
+                'options' => [
+                    'class' => 'text-center'    
+                ],
+            ]); ?>            
                 <div class="row">
                     <div class="form-group col-sm-6 col-md-4">
                         <label for="oldpassword" class="input-label">Старый пароль</label>
@@ -124,24 +132,40 @@ $this->title = 'Профиль';
                         <input name="repeatpassword" type="password" class="form-control" id="repeatpassword">
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Сохранить</button>
-            </form>
+                <?= Html::submitButton('Сохранить', ['class' => 'btn btn-primary']) ?>
+            <?php ActiveForm::end(); ?>
         </div>
 
         <div class="profile-section">
             <h2 class="profile-section-title">Обязательные документы</h2>
+            
+            <?php $pasp = ActiveForm::begin([
+                'action' => '',
+                'options' => [
+                    'class' => 'text-center'    
+                ],
+            ]); ?>            
             <div class="form-group form-justify">
                 <p class="input-label">Паспорт</p>
 
                 <div class="custom-label">
                     <div class="form-group field-uploadavatar-file">
+                        <?= $pasp->field($updoc, 'file')->fileInput(); ?>
+                        <?= $pasp->field($reqtype, 'requestType')->hiddenInput(['value'=> 'pasp'])->label(false); ?>
                         <label class="control-label" for="passport">Загрузить</label>
                         <input type="file" id="passport">
                     </div>
                 </div>
             </div>
+            <?= Html::submitButton('Сохранить', ['class' => 'btn btn-primary']) ?>
+            <?php ActiveForm::end(); ?>
 
-
+            <?php $job = ActiveForm::begin([
+                'action' => '',
+                'options' => [
+                    'class' => 'text-center'    
+                ],
+            ]); ?>            
             <div class="form-group form-justify">
                 <p class="input-label">Трудовая книжка</p>
 
@@ -152,7 +176,15 @@ $this->title = 'Профиль';
                     </div>
                 </div>
             </div>
+            <?= Html::submitButton('Сохранить', ['class' => 'btn btn-primary']) ?>
+            <?php ActiveForm::end(); ?>
 
+            <?php $income = ActiveForm::begin([
+                'action' => '',
+                'options' => [
+                    'class' => 'text-center'    
+                ],
+            ]); ?>            
             <div class="form-group form-justify">
                 <p class="input-label">Справка о доходах</p>
 
@@ -163,6 +195,7 @@ $this->title = 'Профиль';
                     </div>
                 </div>
             </div>
-
+            <?= Html::submitButton('Сохранить', ['class' => 'btn btn-primary']) ?>
+            <?php ActiveForm::end(); ?>
         </div>
     </div>
