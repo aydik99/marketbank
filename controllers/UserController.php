@@ -7,12 +7,17 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
+use app\models\Ask;
+use app\models\Asktype;
 use app\models\LoginForm;
 use app\models\RegisterForm;
 use app\models\ContactForm;
 use app\models\User;
 use app\models\Human;
+use app\models\Status;
 use app\models\UploadAvatar;
+use app\models\UploadDoc;
+use app\models\RequestPost;
 use yii\web\UploadedFile;
 
 class UserController extends Controller
@@ -28,39 +33,67 @@ class UserController extends Controller
         $human = Human::findOne(Yii::$app->user->identity->id);
         $user = User::findOne(Yii::$app->user->identity->id);
         $upload = new UploadAvatar();
+        $updoc = new UploadDoc();
+        $reqtype = new RequestPost();
         
         
-        // Загрузка Аватарки
+        // Принята форма методом POST
         if (Yii::$app->request->post()) {
-            $upload->file = UploadedFile::getInstance($upload,'file');
-            if ($upload->validate()){
-                $path = Yii::$app->params['avaUpload'];
-                $filename = $key = (new \DateTime())->getTimestamp() . '.' . $upload->file->extension;         
-                $upload->file->saveAs($path . $filename );                
-                $human->avatar = $path . $filename;
-                if ($human->save()) {
-                    \Yii::$app->getSession()->setFlash('saved','Фото успешно загружено.');    
-                }                
-            }            
+            // проверяем что прислала форма
+            switch ($_POST['RequestPost']['requestType'])
+            {
+                case 'avatar':
+                    $upload->file = UploadedFile::getInstance($upload,'file');
+                    if ($upload->validate()){
+                        $path = Yii::$app->params['avaUpload'];
+                        $filename = $key = (new \DateTime())->getTimestamp() . '.' . $upload->file->extension;       
+                        
+                        $upload->file->saveAs($path . $filename );                
+                        $human->avatar = $path . $filename;
+                        if ($human->save()) {
+                            \Yii::$app->getSession()->setFlash('saved',"Фото успешно загружно.");    
+                        }    
+                    }
+                    break;
+                case 'mainInfo':    
+                    // сохранение данных в модель Human
+                    if ($human->load(Yii::$app->request->post()) && $human->validate()){            
+                        $msg = 'Данные успешно сохранены. ';
+                        \Yii::$app->getSession()->setFlash('saved', $msg).
+                        $human->save();
+                    }
+                    break;
+                case 'contacts':
+                    // сохранение данных в модель Human
+                    if ($human->load(Yii::$app->request->post()) && $human->validate()){            
+                        $msg = 'Данные успешно сохранены. ';
+                        \Yii::$app->getSession()->setFlash('saved', $msg);
+                        $human->save();
+                    }
+                    // сохранение данных в модель User
+                    if ($user->load(Yii::$app->request->post()) && $user->validate()){  
+                        $msg .= 'На Ваш email отправлена ссылка активации.';                        
+                        $user->save();
+                    }   
+                    
+                    if (!empty($msg))  \Yii::$app->getSession()->setFlash('saved', $msg);                    
+                    break;
+                case 'pasp':
+                
+                
+
+                    break;    
+            
+            } 
         }
         
-        // сохранение данных в модель Human
-        if ($human->load(Yii::$app->request->post()) && $human->validate()){            
-            \Yii::$app->getSession()->setFlash('saved','Данные успешно сохранены.').
-            $human->save();
-        }
-        
-        // сохранение данных в модель User
-        if ($user->load(Yii::$app->request->post()) && $user->validate()){  
-            \Yii::$app->getSession()->setFlash('saved','На Ваш email отправлена ссылка активации.').
-            $user->save();
-        }
-    
         return Yii::$app->user->isGuest ? self::actionLogin() :  $this->render('account', 
                 [
                     'human'=>$human, 
                     'user'=>$user,
-                    'upload'=>$upload
+                    'upload'=>$upload,
+                    'updoc'=>$updoc,
+                    'reqtype'=>$reqtype,
                 ]);            
     }
     
@@ -87,7 +120,17 @@ class UserController extends Controller
      */
     public function actionCredits()
     {   
-            return Yii::$app->user->isGuest ? self::actionLogin() :  $this->render('credits');            
+        $user = User::findOne(Yii::$app->user->identity->id);
+        $ask = Ask::find()
+            ->with('asktype','askstatus')
+            ->where(['id_user'=>$user->id,])
+            ->all();
+            
+        
+        
+        return Yii::$app->user->isGuest ? self::actionLogin() :  $this->render('credits',[
+            'ask'=>$ask,
+        ]);            
     }
     
     /**
@@ -96,7 +139,36 @@ class UserController extends Controller
      */
     public function actionNewrequest()
     {           
-            return Yii::$app->user->isGuest ? self::actionLogin() :  $this->render('newrequest');            
+        //$ask = Human::findOne(Yii::$app->user->identity->id);
+        $user = User::findOne(Yii::$app->user->identity->id);
+        $ask = new Ask();
+        $asktype = new Asktype();
+        //$reqtype = new RequestPost();
+        
+                
+        if ($ask->load(Yii::$app->request->post()) && $ask->validate()){            
+            $ask->date_start = '19.03.2018';    
+            $ask->id_user = $user->id;
+            $ask->status = 1;
+//            echo '<pre>';
+//            print_r($ask);
+//            die;
+            if($ask->save()) {
+                $msg = 'Заявка размещена.';
+                \Yii::$app->getSession()->setFlash('message', $msg);
+                return Yii::$app->response->redirect(['user/credits']);
+            };
+            
+        }
+        
+        
+        
+        return Yii::$app->user->isGuest ? self::actionLogin() :  $this->render('newrequest',
+                [
+                    'user'=>$user,
+                    'ask'=>$ask, 
+                    'asktype'=>$asktype,
+                ]);            
     }
     
     /**
