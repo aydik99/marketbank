@@ -339,14 +339,14 @@ body .list-group-item {
 }
 body .list-group-item:hover {
     cursor: pointer;
+    background-color: #99bbdd;
 }
 
 .credit-item {
     background-color: #fff;
     text-transform: uppercase;
     font-family: "Verdana";
-
-    margin-bottom: 60px;
+    margin-bottom: 30px;
 }
 
 .credit-item__content {
