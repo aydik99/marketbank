@@ -4,14 +4,19 @@
 
         <div class="user-info-block">
             <figure>
-                <img src="<?=$human->avatar?>" alt="user photo">
+                <? if (file_exists($human->avatar)): ?>
+                    <img src="<?=$human->avatar?>" alt="user photo">
+                <? else: ?>
+                    <img src="/images/ava_none.jpg" alt="user has no photo">
+                <? endif; ?>    
                 <figcaption class="user-name">
                     <?=$human->lastname?>&nbsp;<?=$human->firstname?>&nbsp;<?=$human->fathername?>                    
                 </figcaption>
             </figure>
 
             <p class="user-block-text">Мои кредиты</p>
-            <p class="user-block-text">Всего: <span class="pull-right">2</span></p>
+            <p class="user-block-text">Всего: <span class="pull-right"><a 
+                    href="<?=Yii::$app->urlManager->CreateUrl(['user/credits']) ?>"><?=$ask;?></a></span></p>
         </div>
 
     </div>
@@ -53,7 +58,9 @@
 
 
         <section class="requests">
-            <h3 class="text-center">В настоящий момент у вес нет созданных заявок</h3>
+            <? if ($ask==0): ?>
+                <h3 class="text-center">В настоящий момент у вас нет созданных заявок</h3>
+            <? endif; ?>
             <div class="text-center">
                 <a 
                     href="<?=Yii::$app->urlManager->CreateUrl(['user/newrequest']) ?>"
