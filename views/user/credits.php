@@ -31,8 +31,19 @@ $this->title = 'Мои кредиты';
                     </p>
 
                     <footer class="credit-item__footer">
-                        Подано: <time><?=$data->date_start ?></time>
-                        <span class="pull-right">9 предложений</span>
+                       <? if ($data->status == 1): ?>
+                            ПОДАНО <time><?=$data->date_start ?></time>
+                        <? elseif($data->status == 2): ?>    
+                            НАЧАЛО <time><?//=$data->date_start ?></time>                        
+                        <? else: ?>    
+                            ЗАВЕРШЕН <time><?=$data->date_close ?></time>       
+                        <? endif; ?>
+                        
+                        <? if ($data->status == 1): ?>
+                            <span class="pull-right">9 предложений</span>                        
+                        <? else: ?>
+                            <span class="pull-right"><a href="<?=Yii::$app->urlManager->CreateUrl(['user/sdelka','sdelka_id'=>$data->id_ask]) ?>">ПЕРЕЙТИ</a></span>                            
+                        <? endif; ?>
                     </footer>
                 </section>
              <? endforeach; ?>
