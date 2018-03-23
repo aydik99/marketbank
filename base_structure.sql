@@ -11,12 +11,6 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
-
--- Дамп структуры базы данных marketbase
-DROP DATABASE IF EXISTS `marketbase`;
-CREATE DATABASE IF NOT EXISTS `marketbase` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `marketbase`;
-
 -- Дамп структуры для таблица marketbase.ask
 DROP TABLE IF EXISTS `ask`;
 CREATE TABLE IF NOT EXISTS `ask` (
@@ -28,6 +22,7 @@ CREATE TABLE IF NOT EXISTS `ask` (
   `filename` varchar(50) DEFAULT NULL,
   `status` int(10) unsigned,
   `date_start` varchar(10) NOT NULL,
+  `date_close` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id_ask`),
   KEY `FK_ask_status` (`status`),
   KEY `FK_ask_asktype` (`id_type`),
@@ -39,10 +34,10 @@ CREATE TABLE IF NOT EXISTS `ask` (
 
 -- Дамп данных таблицы marketbase.ask: ~3 rows (приблизительно)
 /*!40000 ALTER TABLE `ask` DISABLE KEYS */;
-INSERT IGNORE INTO `ask` (`id_ask`, `summa`, `id_type`, `id_user`, `comment`, `filename`, `status`, `date_start`) VALUES
-	(3, '1000', 1, 38, NULL, NULL, 1, '19.03.2018'),
-	(4, '5000', 2, 38, NULL, NULL, 1, '19.03.2018'),
-	(7, '7000', 2, 38, 'На телефон жене.', NULL, 1, '19.03.2018');
+INSERT IGNORE INTO `ask` (`id_ask`, `summa`, `id_type`, `id_user`, `comment`, `filename`, `status`, `date_start`, `date_close`) VALUES
+	(3, '1000', 1, 38, NULL, NULL, 1, '19.03.2018', NULL),
+	(4, '5000', 2, 38, 'Просто охота денег. Отдавать не буду.', NULL, 2, '19.03.2018', NULL),
+	(7, '7000', 2, 38, 'На телефон жене.', NULL, 3, '19.03.2018', '21.03.2018');
 /*!40000 ALTER TABLE `ask` ENABLE KEYS */;
 
 -- Дамп структуры для таблица marketbase.askstatus
@@ -126,8 +121,8 @@ CREATE TABLE IF NOT EXISTS `human` (
 -- Дамп данных таблицы marketbase.human: ~2 rows (приблизительно)
 /*!40000 ALTER TABLE `human` DISABLE KEYS */;
 INSERT IGNORE INTO `human` (`id_human`, `avatar`, `lastname`, `firstname`, `fathername`, `datebirth`, `tel`) VALUES
-	(38, '../web/images/1520537063.png', 'Иванов', 'Иван', 'Петрович', '12.02.2015', '892253201111'),
-	(39, '../web/images/1520185430.jpg', 'Петров', 'Фридрих', 'Петрович', '25.09.1987', '89192554877');
+	(38, '', 'Иванов', 'Иван', 'Петрович', '12.02.2015', '892253201111'),
+	(39, '', 'Петров', 'Фридрих', 'Петрович', '25.09.1987', '89192554877');
 /*!40000 ALTER TABLE `human` ENABLE KEYS */;
 
 -- Дамп структуры для таблица marketbase.messages
