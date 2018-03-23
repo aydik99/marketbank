@@ -18,6 +18,7 @@ use app\models\Status;
 use app\models\UploadAvatar;
 use app\models\UploadDoc;
 use app\models\RequestPost;
+use app\models\Sdelka;
 use yii\web\UploadedFile;
 
 class UserController extends Controller
@@ -104,7 +105,14 @@ class UserController extends Controller
     public function actionLk()
     {   
         $human = Human::findOne(Yii::$app->user->identity->id);
-        return Yii::$app->user->isGuest ? self::actionLogin() : $this->render('lk',['human'=>$human]);
+        $ask = Ask::find()            
+            ->with('asktype','askstatus')
+            ->where(['id_user'=>$human->id_human, 'status'=>2])
+            ->count();
+        return Yii::$app->user->isGuest ? self::actionLogin() : $this->render('lk',[
+            'human'=>$human,
+            'ask'=>$ask,
+            ]);
     }
     
     /**
@@ -198,7 +206,18 @@ class UserController extends Controller
             return Yii::$app->user->isGuest ? self::actionLogin() :  $this->render('notification');            
     }
     
-    
+     public function actionSdelka()
+    {         
+        $user = User::findOne(Yii::$app->user->identity->id);
+        $ask = Ask::find()
+            ->with('asktype','askstatus')
+            ->where(['id_user'=>$user->id, 'id_ask'=>$_GET['sdelka_id']])
+            ->one();
+         
+            return Yii::$app->user->isGuest ? self::actionLogin() :  $this->render('sdelka',[
+                'ask'=>$ask,
+            ]);            
+    }
 }
 
 ?>
