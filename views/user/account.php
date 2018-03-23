@@ -18,7 +18,11 @@ $this->title = 'Профиль';
 
         <div class="profile-section">
             <div class="profile-image">
+               <? if (file_exists($human->avatar)): ?>
                 <img src="<?=$human->avatar?>" id="ava" alt="avatar">
+                <? else:?>    
+                <img src="/images/ava_none.jpg" id="ava" alt="avatar">
+                <? endif;?>
             </div>
             <h2 class="profile-section-title">Аватар</h2>
                         
