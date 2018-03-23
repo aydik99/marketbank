@@ -13,9 +13,9 @@
 
 
 -- Дамп структуры базы данных marketbase
-DROP DATABASE IF EXISTS `marketbase`;
-CREATE DATABASE IF NOT EXISTS `marketbase` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `marketbase`;
+DROP DATABASE IF EXISTS `u0352641_default`;
+CREATE DATABASE IF NOT EXISTS `u0352641_default` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `u0352641_default`;
 
 -- Дамп структуры для таблица marketbase.ask
 DROP TABLE IF EXISTS `ask`;
@@ -37,7 +37,14 @@ CREATE TABLE IF NOT EXISTS `ask` (
   CONSTRAINT `FK_ask_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
--- Экспортируемые данные не выделены.
+-- Дамп данных таблицы marketbase.ask: ~3 rows (приблизительно)
+/*!40000 ALTER TABLE `ask` DISABLE KEYS */;
+INSERT IGNORE INTO `ask` (`id_ask`, `summa`, `id_type`, `id_user`, `comment`, `filename`, `status`, `date_start`) VALUES
+	(3, '1000', 1, 38, NULL, NULL, 1, '19.03.2018'),
+	(4, '5000', 2, 38, NULL, NULL, 1, '19.03.2018'),
+	(7, '7000', 2, 38, 'На телефон жене.', NULL, 1, '19.03.2018');
+/*!40000 ALTER TABLE `ask` ENABLE KEYS */;
+
 -- Дамп структуры для таблица marketbase.askstatus
 DROP TABLE IF EXISTS `askstatus`;
 CREATE TABLE IF NOT EXISTS `askstatus` (
@@ -46,7 +53,14 @@ CREATE TABLE IF NOT EXISTS `askstatus` (
   PRIMARY KEY (`id_status`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
--- Экспортируемые данные не выделены.
+-- Дамп данных таблицы marketbase.askstatus: ~2 rows (приблизительно)
+/*!40000 ALTER TABLE `askstatus` DISABLE KEYS */;
+INSERT IGNORE INTO `askstatus` (`id_status`, `name_status`) VALUES
+	(1, 'В аукционе'),
+	(2, 'Активная'),
+	(3, 'Завершена');
+/*!40000 ALTER TABLE `askstatus` ENABLE KEYS */;
+
 -- Дамп структуры для таблица marketbase.asktype
 DROP TABLE IF EXISTS `asktype`;
 CREATE TABLE IF NOT EXISTS `asktype` (
@@ -55,7 +69,13 @@ CREATE TABLE IF NOT EXISTS `asktype` (
   PRIMARY KEY (`id_type`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
--- Экспортируемые данные не выделены.
+-- Дамп данных таблицы marketbase.asktype: ~2 rows (приблизительно)
+/*!40000 ALTER TABLE `asktype` DISABLE KEYS */;
+INSERT IGNORE INTO `asktype` (`id_type`, `name_type`) VALUES
+	(1, 'Ипотека'),
+	(2, 'Кредит');
+/*!40000 ALTER TABLE `asktype` ENABLE KEYS */;
+
 -- Дамп структуры для таблица marketbase.bank
 DROP TABLE IF EXISTS `bank`;
 CREATE TABLE IF NOT EXISTS `bank` (
@@ -70,7 +90,10 @@ CREATE TABLE IF NOT EXISTS `bank` (
   PRIMARY KEY (`id_bank`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Экспортируемые данные не выделены.
+-- Дамп данных таблицы marketbase.bank: ~0 rows (приблизительно)
+/*!40000 ALTER TABLE `bank` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bank` ENABLE KEYS */;
+
 -- Дамп структуры для таблица marketbase.docs
 DROP TABLE IF EXISTS `docs`;
 CREATE TABLE IF NOT EXISTS `docs` (
@@ -83,7 +106,10 @@ CREATE TABLE IF NOT EXISTS `docs` (
   CONSTRAINT `FK_doc_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Экспортируемые данные не выделены.
+-- Дамп данных таблицы marketbase.docs: ~0 rows (приблизительно)
+/*!40000 ALTER TABLE `docs` DISABLE KEYS */;
+/*!40000 ALTER TABLE `docs` ENABLE KEYS */;
+
 -- Дамп структуры для таблица marketbase.human
 DROP TABLE IF EXISTS `human`;
 CREATE TABLE IF NOT EXISTS `human` (
@@ -97,7 +123,13 @@ CREATE TABLE IF NOT EXISTS `human` (
   PRIMARY KEY (`id_human`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Экспортируемые данные не выделены.
+-- Дамп данных таблицы marketbase.human: ~2 rows (приблизительно)
+/*!40000 ALTER TABLE `human` DISABLE KEYS */;
+INSERT IGNORE INTO `human` (`id_human`, `avatar`, `lastname`, `firstname`, `fathername`, `datebirth`, `tel`) VALUES
+	(38, '../web/images/1520537063.png', 'Иванов', 'Иван', 'Петрович', '12.02.2015', '892253201111'),
+	(39, '../web/images/1520185430.jpg', 'Петров', 'Фридрих', 'Петрович', '25.09.1987', '89192554877');
+/*!40000 ALTER TABLE `human` ENABLE KEYS */;
+
 -- Дамп структуры для таблица marketbase.messages
 DROP TABLE IF EXISTS `messages`;
 CREATE TABLE IF NOT EXISTS `messages` (
@@ -114,7 +146,10 @@ CREATE TABLE IF NOT EXISTS `messages` (
   CONSTRAINT `FK_msgto_user` FOREIGN KEY (`id_to`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Экспортируемые данные не выделены.
+-- Дамп данных таблицы marketbase.messages: ~0 rows (приблизительно)
+/*!40000 ALTER TABLE `messages` DISABLE KEYS */;
+/*!40000 ALTER TABLE `messages` ENABLE KEYS */;
+
 -- Дамп структуры для таблица marketbase.suggest
 DROP TABLE IF EXISTS `suggest`;
 CREATE TABLE IF NOT EXISTS `suggest` (
@@ -131,7 +166,10 @@ CREATE TABLE IF NOT EXISTS `suggest` (
   CONSTRAINT `fk_sug_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Экспортируемые данные не выделены.
+-- Дамп данных таблицы marketbase.suggest: ~0 rows (приблизительно)
+/*!40000 ALTER TABLE `suggest` DISABLE KEYS */;
+/*!40000 ALTER TABLE `suggest` ENABLE KEYS */;
+
 -- Дамп структуры для таблица marketbase.user
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
@@ -146,7 +184,13 @@ CREATE TABLE IF NOT EXISTS `user` (
   UNIQUE KEY `username` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
 
--- Экспортируемые данные не выделены.
+-- Дамп данных таблицы marketbase.user: ~2 rows (приблизительно)
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT IGNORE INTO `user` (`id`, `username`, `password`, `email`, `confirmed`, `activation_key`, `role`) VALUES
+	(38, 'ivanov', '$2y$13$qLOtgcxBxcgNeWxvkD.KRORH1HQdeVQ2FhbNY.4rbgB3vF7gDl1Dq', 'pogorelov_vt@mail.ru', 1, '1519417254', 'user'),
+	(39, 'petrov', '$2y$13$EdNtNh2QxoX58fBnJ/GKPudKcGB5A88M0wMr6A1XrsvKKjE5yc0.K', 'magvaj4ik@mail.ru', 1, '1519421964', 'user');
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

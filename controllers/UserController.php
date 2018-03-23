@@ -18,6 +18,7 @@ use app\models\Status;
 use app\models\UploadAvatar;
 use app\models\UploadDoc;
 use app\models\RequestPost;
+use app\models\Sdelka;
 use yii\web\UploadedFile;
 
 class UserController extends Controller
@@ -198,7 +199,10 @@ class UserController extends Controller
             return Yii::$app->user->isGuest ? self::actionLogin() :  $this->render('notification');            
     }
     
-    
+     public function actionSdelka()
+    {           
+            return Yii::$app->user->isGuest ? self::actionLogin() :  $this->render('sdelka');            
+    }
 }
 
 ?>
