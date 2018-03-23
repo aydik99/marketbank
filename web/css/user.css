@@ -532,4 +532,152 @@ body .list-group-item:hover {
     margin-bottom: 40px;
 }
 
+.block1
+{
+    max-width: 800px;
+    background-color: #fff;
+    min-height: 100px;
+}
+
+.block1 h2, .block1 h3
+{
+     padding: 10px;
+}
+
+
+.block1 p
+{
+     text-align: center;
+     color: #b1b1b1;
+}
+
+.block2
+{
+    border-bottom: 3px solid #b1b1b1;
+}
+
+.block2 span
+{
+    position: relative;
+    top: -40px;
+    float: right;
+    font-weight: bold;
+}
+
+#sdelka_img
+{
+    padding: 10px;
+    
+}
+
+.sdelka_text
+{
+    position: relative;
+    top: -60px;
+}
+
+
+.block3
+{
+    max-width: 800px;
+    background-color: #fff;
+    min-height: 510px;
+    margin: 0 0 140px 0;
+}
+
+.block4
+{
+   max-width: 300px;
+    background-color: #fff;
+    min-height: 210px; 
+}
+.block3 textarea
+{
+    width: 100%;
+    height: 80px;
+}
+
+.block3_head
+{
+    border-bottom: 3px solid #b1b1b1;
+}
+
+.block3_head img
+{
+    margin: 10px 0 10px 10px;
+}
+
+.message
+{
+    clear: both;
+    margin: 0 0 20px 0;
+}
+
+.user_message
+{
+    width: 300px;
+    min-height: 80px;
+    background-color: #02cd40;
+    border-radius: 20px;
+    float: right;
+    margin: 0 20px 0 0;
+    text-align: center;
+    padding: 20px 0  0 0 ;
+    font-size: 16px;
+    color: #fff;
+
+}
+
+.bank_message
+{
+    width: 300px;
+    min-height: 80px;
+    background-color: #2993ff;
+    border-radius: 20px;
+    float: left;
+    margin: 0 20px  0 30px;
+    text-align: center;
+    vertical-align: center;
+    padding: 20px 0  0 0 ;
+    font-size: 16px;
+    color: #fff;
+}
+
+
+.messages
+{
+    width: 100%;
+    height: 300px;
+    border: 1px solid #ff0000;
+    overflow-y: scroll;
+}
+
+#save_message
+{
+    width: 50px;
+    height: 40px;
+    float: right;
+    margin: -35px 5px 0;
+}
+
+.menu_message2
+{
+    margin: 10px 0 0 0;
+}
+
+.menu_message2 img
+{
+    margin: 0 20px;
+}
+
+#bh_3
+{
+    text-align: center;
+}
+
+.detail_text
+{
+    text-align: center;
+    padding: 20px 0 0 0;
+}
 /* Конец страницы "подать заявку" */
