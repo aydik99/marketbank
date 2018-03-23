@@ -9,6 +9,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use app\models\Human;
 
 AppAsset::register($this);
 ?>
@@ -101,7 +102,14 @@ AppAsset::register($this);
                                 aria-haspopup="true"
                                 aria-expanded="false"
                             >
-                                <img src="/images/user-acc.png" alt="аватар пользователя">
+                               <? 
+                                $human = Human::findOne(Yii::$app->user->identity->id);
+                                if (file_exists($human->avatar)):
+                                ?>
+                                    <img id="topmenu_ava" src="<?=$human->avatar;?>" alt="аватар пользователя">
+                                <? else: ?>
+                                    <img id="topmenu_ava" src="/images/ava_none.jpg" alt="нет аватара">
+                                <? endif; ?>
                                 <img src="/images/icons/arrow.png" alt="стрелка" class="arrow-menu-icon">
                             </a>
                             <ul class="dropdown-menu lk-menu__dropdown">
