@@ -9,6 +9,7 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\Ask;
 use app\models\Asktype;
+use app\models\Docs;
 use app\models\LoginForm;
 use app\models\RegisterForm;
 use app\models\ContactForm;
@@ -36,6 +37,7 @@ class UserController extends Controller
         $upload = new UploadAvatar();
         $updoc = new UploadDoc();
         $reqtype = new RequestPost();
+        $docs = new Docs();
         
         
         // Принята форма методом POST
@@ -47,7 +49,7 @@ class UserController extends Controller
                     $upload->file = UploadedFile::getInstance($upload,'file');
                     if ($upload->validate()){
                         $path = Yii::$app->params['avaUpload'];
-                        $filename = $key = (new \DateTime())->getTimestamp() . '.' . $upload->file->extension;       
+                        $filename = (new \DateTime())->getTimestamp() . '.' . $upload->file->extension;       
                         
                         $upload->file->saveAs($path . $filename );                
                         $human->avatar = $path . $filename;
@@ -79,10 +81,26 @@ class UserController extends Controller
                     
                     if (!empty($msg))  \Yii::$app->getSession()->setFlash('saved', $msg);                    
                     break;
-                case 'pasp':
-                
-                
-
+                case 'document':
+                    switch ($_POST['RequestPost']['docType'])
+                    {
+                        case 'pasp':$docs->name_doc = "Паспорт"; break;
+                        case 'job':$docs->name_doc = "Трудовая книжка"; break;
+                        case 'income':$docs->name_doc = "Справка о доходах"; break; 
+                    }
+                                        
+                    $updoc->file = UploadedFile::getInstance($updoc,'file');
+                    if ($updoc->validate()){
+                        $path = Yii::$app->params['docUpload'];
+                        $filename = (new \DateTime())->getTimestamp() . '.' . $updoc->file->extension;                               
+                        $updoc->file->saveAs($path . $filename );                
+                        
+                        $docs->id_user = $user->id;
+                        $docs->filename = $path . $filename;
+                        if ($docs->save()) {
+                            \Yii::$app->getSession()->setFlash('saved',"$docs->name_doc успешно загружен(a).");    
+                        }  
+                    }
                     break;    
             
             } 
